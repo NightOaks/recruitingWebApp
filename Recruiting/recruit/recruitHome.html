@@ -4,31 +4,45 @@
     <meta charset="utf-8" />
     <title>IWU Recruiting</title>
 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="../myStyle.css">
+
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="../script.js"></script>
   </head>
 
   <body>
+  	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-    <form action="saveRecruit.php">
-    
-      First Name<br>
-      <input type="text" name="firstName" maxlength="16" autofocus required><br><br>
-      
-      Last Name<br>
-      <input type="text" name="lastName" maxlength="16" required><br><br>
-      
-      Graduation Year<br>
-      <input type="text" name="gradYear" maxlength="4" required><br><br>
-      
-      High School<br>
-      <input type="text" name="highSchool" maxlength="32" required><br><br>
-      
-      AAU Team<br>
-      <input type="text" name="aau" maxlength="32" required><br><br>
-      
-      <input type="submit" value="Submit">
-      
-    </form>
+      <div class="navbar-collapse">
+        
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Recruit <span class="sr-only">(current)</span></a>
+          </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="../game/gameHome.html">Game</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn nav-link my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="../recruit/addRecruit.html">Add</a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+    <script src="script.js"></script>
   </body>
 </html>
