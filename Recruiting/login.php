@@ -11,15 +11,17 @@
 		$error = ""; 
 		
 		$sql = "SELECT id FROM user WHERE username = '$myusername' and password = '$mypassword'";
-		$result = mysqli_query($db, $sql);
+		// $result = mysqli_query($db, $sql);
+		$result = $db->query($sql);
 		// $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-		$row = mysqli_fetch_row($result);
+		// $row = mysqli_fetch_row($result);
+		$row = $result->fetch_assoc();
 		// $active = $row['active'];
 		$count = mysqli_num_rows($result);
 			
 		// If result matched $myusername and $mypassword, table row must be 1 row	
-		if(TRUE) {
-			session_register($myusername);
+		if($count == 1) {
+			// session_register($myusername);
 			$_SESSION['login_user'] = $myusername;
 				
 			header("location: home.php");
