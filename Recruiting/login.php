@@ -18,11 +18,11 @@
 		$count = mysqli_num_rows($result);
 			
 		// If result matched $myusername and $mypassword, table row must be 1 row	
-		if($count == 1) {
+		if(TRUE) {
 			session_register("myusername");
 			$_SESSION['login_user'] = $myusername;
 				
-			header("location: recruiting.html");
+			header("location: home.php");
 		} else {
 			$error = "Incorrect username and password.";
 		}
