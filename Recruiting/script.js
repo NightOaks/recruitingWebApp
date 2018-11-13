@@ -8,13 +8,7 @@
 
 let recruitHomepageBtn = document.getElementById("recruitHomepageBtn");
 recruitHomepageBtn.onclick = function recruitHomepageBtn() {
-    //window.location.href='recruit/recruitHome.html';
-    <?php
-    $result = $mysqli->query("SELECT lastname FROM employees");
-	?>
-
-	let changeName = document.getElementById("hi").value;
-	changeName = $result;
+    window.location.href='recruit/recruitHome.html';
     return -1;
 }
 
