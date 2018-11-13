@@ -10,7 +10,7 @@
 		$mypassword = mysqli_real_escape_string($db, $_POST['password']);
 		$error = ""; 
 		
-		$sql = "SELECT id FROM user WHERE username = '$myusername' and password = '$mypassword'";
+		$sql = "SELECT userid FROM user WHERE username = '$myusername' and password = '$mypassword'";
 		// $result = mysqli_query($db, $sql);
 		$result = $db->query($sql);
 		// $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
