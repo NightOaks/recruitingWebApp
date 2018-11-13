@@ -1,5 +1,5 @@
 <?php
-	define('DB_SERVER', 'levi.cis.indwes.edu');
+	define('DB_SERVER', 'localhost');
 	define('DB_USERNAME', 'iwurecruiting');
 	define('DB_PASSWORD', 'nicolespostmoves');
 	define('DB_DATABASE', 'iwurecruiting');
