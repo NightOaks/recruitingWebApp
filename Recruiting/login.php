@@ -1,5 +1,6 @@
 <?php
 	include("config.php");
+
 	session_start();
 	
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -12,9 +13,8 @@
 		$sql = "SELECT id FROM user WHERE username = '$myusername' and password = '$mypassword'";
 		$result = mysqli_query($db, $sql);
 		// $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-		$row = mysqli_fetch_assoc($result);
-		$active = $row['active'];
-			
+		$row = mysqli_fetch_row($result);
+		// $active = $row['active'];
 		$count = mysqli_num_rows($result);
 			
 		// If result matched $myusername and $mypassword, table row must be 1 row	
