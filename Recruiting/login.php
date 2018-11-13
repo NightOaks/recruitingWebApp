@@ -15,7 +15,7 @@
 		$result = $db->query($sql);
 		// $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		// $row = mysqli_fetch_row($result);
-		$row = $result->fetch_assoc();
+		// $row = $result->fetch_assoc();
 		// $active = $row['active'];
 		$count = mysqli_num_rows($result);
 			
