@@ -10,7 +10,25 @@
 
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script src="../script.js"></script>
+    <script src="../script.js">
+    /*
+      function showUser(str) {
+        if (str == "") {
+          document.getElementById("txtHint").innerHTML = "";
+          return;
+        } else { 
+          xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                  document.getElementById("txtHint").innerHTML = this.responseText;
+              }
+          };
+          xmlhttp.open("GET","player.php?q="+str,true);
+          xmlhttp.send();
+        }
+    }
+    */
+    </script>
   </head>
 
   <body>
@@ -28,6 +46,16 @@
           </li>
         </ul>
 
+        <form>
+          <select name="users" onchange="showUser(this.value)">
+            <option value="">Select a person:</option>
+            <option value="1">Nicole Ignasiak</option>
+            <option value="2">Jennifer Aniston</option>
+            <option value="3">Emma Stone</option>
+            <option value="4"></option>
+            </select>
+          </form>
+
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <form class="form-inline my-2 my-lg-0">
@@ -40,6 +68,8 @@
             <a class="nav-link" href="../recruit/addRecruit.php">Add</a>
           </li>
         </ul>
+
+       
 
       </div>
     </nav>
