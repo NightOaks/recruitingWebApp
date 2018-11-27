@@ -2,7 +2,7 @@
 
 /*-- we included connection files--*/
   include "../config.php";
-  $sql = "SELECT * FROM player WHERE id = '$_GET[id]'";
+  $sql = "SELECT * FROM player WHERE p_id = '$_GET[id]'";
   $result = $db->query($sql);
   $player = $result->fetch_assoc();
 
