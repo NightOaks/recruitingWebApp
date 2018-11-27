@@ -10,6 +10,7 @@
   </head>
 
   <body>
+  <?php include('session.php'); ?>
     <div class="padding">
       <h1>Welcome <?php echo $login_session; ?></h1>
       <a href="recruit/recruitHome.php"><button id="recruitHomepageBtn" class="btn btn-secondary btn-lg btn-block">Recruit</button></a>
