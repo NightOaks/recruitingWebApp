@@ -1,51 +1,19 @@
 <?php
 
   /*-- we included connection files--*/
-  include "config.php";
+  include "../config.php";
 
-  /*--- we created a variables to display the error message on design page ------*/
-  $error = "";
+if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  if (isset($_POST["btn_upload"]) == "Upload")
-  {
-    $uploadOk = 1;
+  $imageName=$_FILES["myimage"]["name"]; 
 
-    $file_tmp = $_FILES["fileImg"]["tmp_name"];
-    $file_name = $_FILES["fileImg"]["name"];
+  $imageTmp=addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
 
-    /*image name variable that you will insert in database ---*/
-    $image_name = $_POST["img-name"];
+  $sql = "INSERT INTO player(fname, lname, year, hs, aau, profileImage, profileName) VALUES ('$_POST[fname]', '$_POST[lname]', '$_POST[year]', '$_POST[hs]', '$_POST[aau]', '$imageTmp', '$imageName')";
 
-    //image directory where actual image will be store
-    $file_path = "photo/".$file_name;
+  $db->query($sql);
+}
 
-    $target_file = $file_path . basename($file_name); 
-
-  /*---------------- php textbox validation checking ------------------*/
-  if($image_name == "")
-  {
-    $error = "Please enter Image name.";
-  }
-
-  /*-------- now insertion of image section has start -------------*/
-  else
-  {
-    if(file_exists($file_path))
-    {
-      $error = "Sorry,The <b>".$file_name."</b> image already exist.";
-      $uploadOk = 0;
-    }
-      else
-      {
-        $result = mysqli_connect($host, $uname, $pwd) or die("Connection error: ". mysqli_error());
-        mysqli_select_db($result, $db_name) or die("Could not Connect to Database: ". mysqli_error());
-        mysqli_query($result,"INSERT INTO images(img_name,img_path)
-        VALUES('$image_name','$file_path')") or die ("image not inserted". mysqli_error());
-        move_uploaded_file($file_tmp,$file_path);
-        $error = "<p align=center>File ".$_FILES["fileImg"]["name"].""."<br />Image saved into Table.";
-      }
-    }
-  }
 ?>
 
 <!DOCTYPE html>
@@ -63,11 +31,41 @@
     <h2>File uploading</h2>
     <form method="POST" name="upfrm" action="" enctype="multipart/form-data">
         <div>
-          <input type="text" placeholder="Enter image name" name="img-name" class="tb" />
-          <input type="file" name="fileImg" class="file_input" />
-          <input type="submit" value="Upload" name="btn_upload" class="btn" />
+          First name:<br>
+          <input type="text" name="fname"><br>
+          Last name:<br>
+          <input type="text" name="lname"><br>
+          Year:<br>
+          <input type="text" name="year"><br>
+          High School:<br>
+          <input type="text" name="hs"><br>
+          AAU:<br>
+          <input type="text" name="aau"><br>
+          Enter Image Name:<br>
+          <input type="file" name="myimage" id="myimage" class="file_input" />
+          <input type="submit" value="Upload" name="btn_upload" id="btn_upload" class="btn" />
         </div>
       </form>
+      <table>
+        <tr><th>image</th></tr>
+
+      <?php
+      $mysqli = new mysqli($host, $uname, $pwd, $db_name);
+      $query = "SELECT profileImage FROM player ORDER BY id DESC";
+      $result = mysqli_query($mysqli, $query);
+      while($row = mysqli_fetch_array($result))
+      {
+          echo '<tr>
+              <td>
+                  <img src="data:image/jpeg;base64,'.base64_encode($row['profileImage']).'"/>
+              </td>
+            </tr>
+
+            ';
+      }
+
+      ?>
+
       <div class="msg">
         <strong>
           <?php if(isset($error)){echo $error;}?>

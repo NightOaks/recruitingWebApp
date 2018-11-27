@@ -11,12 +11,11 @@
 
   <body>
     <div class="padding">
-      <h1>Welcome <?php echo $login_session; ?></h1>
-      <button id="recruitHomepageBtn" class="btn btn-secondary btn-lg btn-block">Recruit</button>
+      <a href="recruit/recruitHome.php"><button id="recruitHomepageBtn" class="btn btn-secondary btn-lg btn-block">Recruit</button></a>
       <br>
-      <button id="gameHomepageBtn" class="btn btn-secondary btn-lg btn-block">Game</button>
+      <a href="game/gameHome.php"><button id="gameHomepageBtn" class="btn btn-secondary btn-lg btn-block">Game</button></a>
     </div>
     
-    <script src="script.js"></script>
+    
   </body>
 </html>
