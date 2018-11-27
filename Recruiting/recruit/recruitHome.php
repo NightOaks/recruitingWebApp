@@ -46,9 +46,10 @@
       include("../config.php");
       $sql = "SELECT * FROM player";
       $playerlist = $db->query($sql);
+      $playerform = '';
           
           while ($player = $playerlist->fetch_assoc()){
-            $playerForm = 
+            $playerForm .= 
               "<div>
               <form action='infoRecruit.php' method='get'>
               <input type='hidden' name='id' value=".$player['p_id']."/>
