@@ -31,7 +31,7 @@
 	}
 ?>
 
-<html>
+<!DOCTYPE html>
 	
 	<head>
 		<title>Login Page</title>
@@ -40,6 +40,7 @@
 			body {
 				font-family:Arial, Helvetica, sans-serif;
 				font-size:14px;
+				background-color: #FFFFFF;
 			}
 			label {
 				font-weight:bold;
@@ -49,25 +50,43 @@
 			.box {
 				border:#666666 solid 1px;
 			}
+				
+			.overallBox {
+				text-align: center;
+			}
+			
+			.innerBox {
+				width: 300px;
+				border: solid 1px #333333;
+				text-align: left;
+			}
+			
+			.loginHeader {
+				background-color: #333333;
+				color: #FFFFFF;
+				padding: 3px;
+			}
+			
+			.inputBox {
+				margin: 30px;
+			}
 		</style>
 		
 	</head>
 	
-	<body bgcolor = "#FFFFFF">
+	<body>
 	
-		<div align = "center">
-			<div style = "width:300px; border: solid 1px #333333; " align = "left">
-				<div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
+		<div class = "overallBox">
+			<div class = "innerBox">
+				<div class = "loginHeader"><b>Login</b></div>
 				
-				<div style = "margin:30px">
+				<div class = "inputBox">
 					
-					<form action = "" method = "post">
+					<form method = "post">
 						<label>Username  :</label><input type = "text" name = "username" class = "box"/><br /><br />
 						<label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
 						<input type = "submit" value = " Submit "/><br />
 					</form>
-					
-					<div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
 					
 				</div>
 				
