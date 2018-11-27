@@ -46,24 +46,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
           <input type="submit" value="Upload" name="btn_upload" id="btn_upload" class="btn" />
         </div>
       </form>
-      <table>
-        <tr><th>image</th></tr>
-
-      <?php
-      $query = "SELECT profileImage FROM player ORDER BY id DESC";
-      $result = mysqli_query($db, $query);
-      while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
-      {
-          echo '<tr>
-              <td>
-                  <img src="data:image/jpeg;base64,'.base64_encode($row['profileImage']).'"/>
-              </td>
-            </tr>
-
-            ';
-      }
-
-      ?>
 
       <div class="msg">
         <strong>
