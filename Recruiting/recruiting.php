@@ -16,6 +16,8 @@
       <a href="recruit/recruitHome.php"><button id="recruitHomepageBtn" class="btn btn-secondary btn-lg btn-block">Recruit</button></a>
       <br>
       <a href="game/gameHome.php"><button id="gameHomepageBtn" class="btn btn-secondary btn-lg btn-block">Game</button></a>
+      <br>
+      <h2><a href = "logout.php">Logout</a></h2>
     </div>
     
     
