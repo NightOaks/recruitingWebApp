@@ -43,7 +43,7 @@
     </nav>
 
     <?php
-      include "config.php";
+      include("../config.php");
       $sql = "SELECT * FROM player";
       $playerlist = $db->query($sql);
           
