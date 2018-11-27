@@ -48,7 +48,7 @@
       $playerlist = $db->query($sql);
           
           while ($player = $playerlist->fetch_assoc()){
-            $playerForm .= 
+            $playerForm = 
               "<div>
               <form action='infoRecruit.php' method='get'>
               <input type='hidden' name='id' value=".$player['p_id']."/>
