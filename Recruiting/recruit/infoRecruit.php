@@ -30,7 +30,7 @@
 
 echo 
 '
-<img src="fetchImage.php?id='.$player['id'].' width="175" height="200"/>
+<img src="fetchImage.php?id='.$player['p_id'].' width="175" height="200"/>
 <h1 style="text-align: center;">'.$player['fname'].' '.$player['lname'].'</h1>
     <p style="text-align: center;">'.$player['year'].'</p>
     <p style="text-align: center;">'.$player['hs'].'</p>

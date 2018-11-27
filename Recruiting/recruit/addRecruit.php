@@ -50,10 +50,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <tr><th>image</th></tr>
 
       <?php
-      $mysqli = new mysqli($host, $uname, $pwd, $db_name);
       $query = "SELECT profileImage FROM player ORDER BY id DESC";
-      $result = mysqli_query($mysqli, $query);
-      while($row = mysqli_fetch_array($result))
+      $result = mysqli_query($db, $query);
+      while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
       {
           echo '<tr>
               <td>
