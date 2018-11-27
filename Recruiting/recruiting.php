@@ -13,9 +13,9 @@
   <?php include('session.php'); ?>
     <div class="padding">
       <h1>Welcome <?php echo $login_session; ?></h1>
-      <a href="recruit/recruitHome.php"><button id="recruitHomepageBtn" class="btn btn-secondary btn-lg btn-block">Recruit</button></a>
+      <a href="recruit/recruitHome.php" class="btn btn-secondary btn-lg btn-block">Recruit</a>
       <br>
-      <a href="game/gameHome.php"><button id="gameHomepageBtn" class="btn btn-secondary btn-lg btn-block">Game</button></a>
+      <a href="game/gameHome.php"><button class="btn btn-secondary btn-lg btn-block">Game</a>
       <br>
       <h2><a href = "logout.php">Logout</a></h2>
     </div>
