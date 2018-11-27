@@ -11,7 +11,7 @@
 
   <body>
     <div class="padding">
-      <h1>Welcome <?php echo $login_session; ?></h1>
+      <h1>Welcome <?php echo $_SESSION['login_user']; ?></h1>
       <a href="recruit/recruitHome.php"><button id="recruitHomepageBtn" class="btn btn-secondary btn-lg btn-block">Recruit</button></a>
       <br>
       <a href="game/gameHome.php"><button id="gameHomepageBtn" class="btn btn-secondary btn-lg btn-block">Game</button></a>
