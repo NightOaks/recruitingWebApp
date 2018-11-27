@@ -24,7 +24,7 @@
 			// session_register($myusername);
 			$_SESSION['login_user'] = $myusername;
 				
-			header("location: home.php");
+			header("location: recruiting.php");
 		} else {
 			$error = "Incorrect username and password.";
 		}
