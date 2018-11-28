@@ -1,19 +1,12 @@
 <?php
-
   /*-- we included connection files--*/
   include "../config.php";
-
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-
   $imageName=$_FILES["myimage"]["name"]; 
-
   $imageTmp=addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
-
   $sql = "INSERT INTO player(fname, lname, year, hs, aau, profileImage, profileName) VALUES ('$_POST[fname]', '$_POST[lname]', '$_POST[year]', '$_POST[hs]', '$_POST[aau]', '$imageTmp', '$imageName')";
-
   $db->query($sql);
 }
-
 ?>
 
 <!DOCTYPE html>

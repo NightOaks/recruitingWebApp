@@ -2,10 +2,9 @@
 
 /*-- we included connection files--*/
   include "../config.php";
-  $sql = "SELECT * FROM player WHERE p_id = '$_GET[id]'";
+  $sql = "SELECT * FROM player WHERE p_id = '$_GET[p_id]'";
   $result = $db->query($sql);
   $player = $result->fetch_assoc();
-
 
 ?>
 
@@ -21,27 +20,13 @@
   </head>
 
   <body>
+    <?php
+      echo '<img class="playerProfileImage" src="data:image/jpeg;base64,'.base64_encode($player['profileImage']).'"/>
 
-<table>
-        <tr><th>image</th></tr>
-
-<?php
-
-
-echo 
-'
-<img src="fetchImage.php?id='.$player['p_id'].' width="175" height="200"/>
-<h1 style="text-align: center;">'.$player['fname'].' '.$player['lname'].'</h1>
-    <p style="text-align: center;">'.$player['year'].'</p>
-    <p style="text-align: center;">'.$player['hs'].'</p>
-    <p style="text-align: center;">'.$player['aau'].'</p>';
-?>
-
-    
-
-
-
-
-
+      <h2 style="text-align: center;">'.$player['fname'].' '.$player['lname'].'</h2>
+      <p style="text-align: center;">'.$player['year'].'</p>
+      <p style="text-align: center;">'.$player['hs'].'</p>
+      <p style="text-align: center;">'.$player['aau'].'</p>';
+    ?>
   </body>
 </html>

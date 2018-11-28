@@ -12,17 +12,4 @@ header("content-type:image/jpeg");
   header("Content-type: image/jpeg");
   echo $row['profileImage'];
 
-/*$name=$_GET['name'];
-
-$select_image="SELECT * FROM player WHERE profileName='$name'";
-
-$var=mysql_query($select_image);
-
-if($row=mysql_fetch_array($var))
-{
- $image_name=$row["profileName"];
- $image_content=$row["profileImage"];
-}
-echo $image;*/
-
 ?>
