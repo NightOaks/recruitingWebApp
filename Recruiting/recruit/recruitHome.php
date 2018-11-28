@@ -84,7 +84,7 @@
             </div>";
           }
 
-        echo $playerForm;
+        // echo $playerForm;
     ?>
   </body>
 </html>
