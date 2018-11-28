@@ -9,6 +9,32 @@
     <link rel="stylesheet" type="text/css" href="../myStyle.css">
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Scripting for AJAX
+  <script>
+    function getPlayers(str) {
+      if (str == "") {
+        document.getElementById("search").innerHTML = "";
+        return;
+      } else { 
+        if (window.XMLHttpRequest) {
+          // code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp = new XMLHttpRequest();
+        } else {
+          // code for IE6, IE5
+          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("txtHint").innerHTML = this.responseText;
+          }
+      };
+      xmlhttp.open("GET","request.php?q="+str,true);
+      xmlhttp.send();
+    }
+  }
+</script>
+-->
   </head>
 
   <body>
@@ -29,7 +55,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control mr-sm-2" placeholder="Search" onchange="getPlayer(this.value)" aria-label="Search">
               <button class="btn nav-link my-2 my-sm-0" type="submit">Search</button>
             </form>
           </li>
@@ -57,6 +83,17 @@
             </form>
           </div>";
         }
+      $playerform = '';
+          
+          while ($player = $playerlist->fetch_assoc()){
+            $playerForm .= 
+              "<div>
+              <form action='infoRecruit.php' method='get'>
+              <input type='hidden' name='id' value=".$player['p_id']."/>
+              <input style='width:100%;'type='submit' value='".$player['fname']." ".$player['lname']." ".$player['year']." ".$player['hs']." ".$player['aau']."'>
+              </form>
+            </div>";
+          }
 
         echo $playerForm;
     ?>
