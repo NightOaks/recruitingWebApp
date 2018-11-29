@@ -10,31 +10,30 @@
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <!-- Scripting for AJAX
   <script>
-    function getPlayers(str) {
-      if (str == "") {
-        document.getElementById("search").innerHTML = "";
-        return;
-      } else { 
-        if (window.XMLHttpRequest) {
-          // code for IE7+, Firefox, Chrome, Opera, Safari
-          xmlhttp = new XMLHttpRequest();
-        } else {
-          // code for IE6, IE5
-          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-              document.getElementById("txtHint").innerHTML = this.responseText;
-          }
-      };
-      xmlhttp.open("GET","request.php?q="+str,true);
-      xmlhttp.send();
-    }
-  }
-</script>
--->
+      window.onload = function(){
+
+        
+        var input1 = document.getElementById("search");
+    
+        input1.addEventListener("input", function(event){
+            let request = new XMLHttpRequest();
+            request.onreadystatechange = function(){
+                if (request.readyState == 4 && request.status == 200){
+                    var response = request.responseText;
+                    //var parsedResponse = JSON.parse(response);
+                    document.getElementById("ajaxOutput").innerHTML = response;
+                }
+            }
+            var path = "request.php?q=" + document.getElementById("search").value;
+            request.open("GET", path, true);
+            request.send();
+
+        });
+      }
+    
+</script>  
+
   </head>
 
   <body>
@@ -55,8 +54,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" placeholder="Search" onchange="getPlayer(this.value)" aria-label="Search">
-              <button class="btn nav-link my-2 my-sm-0" type="submit">Search</button>
+              <input id="search" type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
             </form>
           </li>
 
@@ -68,11 +66,14 @@
       </div>
     </nav>
 
+    <p id="ajaxOutput"></p>
+
     <?php
       include("../config.php");
       $sql = "SELECT * FROM player";
       $playerlist = $db->query($sql);
       $playerForm = '';
+
 
         while ($player = $playerlist->fetch_assoc()){
           $playerForm .= 

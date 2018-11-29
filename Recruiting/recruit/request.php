@@ -1,50 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table, td, th {
-    border: 1px solid black;
-    padding: 5px;
-}
-
-th {text-align: left;}
-</style>
-</head>
-<body>
-
 <?php
-$q = intval($_GET['q']);
 
 include("../config.php");
 
-mysqli_select_db($con,"iwurecruiting");
-$sql="SELECT * FROM player WHERE id = '".$q."'";
-$result = mysqli_query($con,$sql);
+$q = $_GET['q'];
 
-echo "<table>
-<tr>
-<th>Firstname</th>
-<th>Lastname</th>
-<th>Age</th>
-<th>Hometown</th>
-<th>Job</th>
-</tr>";
-while($row = mysqli_fetch_array($result)) {
-    echo "<tr>";
-    echo "<td>" . $row['FirstName'] . "</td>";
-    echo "<td>" . $row['LastName'] . "</td>";
-    echo "<td>" . $row['Age'] . "</td>";
-    echo "<td>" . $row['Hometown'] . "</td>";
-    echo "<td>" . $row['Job'] . "</td>";
-    echo "</tr>";
+$sql="SELECT fname, lname FROM player WHERE fname LIKE '%" . $q . "%' or lname LIKE '%" . $q . "%'";
+
+$result = $db->query($sql);
+
+$list = [];
+while ($player = $result->fetch_assoc()) {
+    array_push($list, $player['fname'] . ' ' . $player['lname']);
 }
-echo "</table>";
-mysqli_close($con);
+
+$arrayEncoded = json_encode($list);
+if ($q == ""){
+    echo ""; 
+} else {
+    echo $arrayEncoded;
+}
+
 ?>
-</body>
-</html>
