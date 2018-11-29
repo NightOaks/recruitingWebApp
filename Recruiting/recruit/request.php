@@ -22,7 +22,6 @@ $q = intval($_GET['q']);
 
 include("../config.php");
 
-mysqli_select_db($con,"iwurecruiting");
 $sql="SELECT * FROM player WHERE id = '".$q."'";
 $result = mysqli_query($con,$sql);
 
