@@ -68,7 +68,6 @@
     <?php
       include("../config.php");
       $sql = "SELECT * FROM player";
-      $ajax = "SELECT * FROM player WHERE "
       $playerlist = $db->query($sql);
       $playerForm = '';
 

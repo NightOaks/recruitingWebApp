@@ -3,18 +3,22 @@
 include("../config.php");
 
 $q = $_GET['q'];
-
+/*
 $sql="SELECT fname, lname FROM player WHERE fname LIKE '%$q%' or lname LIKE '%$q%';;
 
-$playerlist = $db->query($sql);
+$array[] = $db->query($sql);
+*/
+$array = array("Nicole Ignasiak", "Katie Key");
 
-$array = $playerlist->fetch_all();
+$list = array();
 
-$playerlist->free();
-
-foreach (){
-    if (stripos())
+foreach ($array as $destination) {
+    if (stripos($destination, $q) !== false){
+        $list[] = $destination;
+    }
 }
 
-echo $playerForm;
+$arrayEncoded = json_encode($list);
+
+echo $list;
 ?>
