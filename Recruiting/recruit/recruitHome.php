@@ -22,7 +22,7 @@
                 if (request.readyState == 4 && request.status == 200){
                     var response = request.responseText;
                     //var parsedResponse = JSON.parse(response);
-                    document.getElementById("ajaxOutput").innerHTML = <?php json_decode(response)?>;
+                    document.getElementById("ajaxOutput").innerHTML = response;
                 }
             }
             var path = "request.php?q=" + document.getElementById("search").value;
