@@ -1,28 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table, td, th {
-    border: 1px solid black;
-    padding: 5px;
-}
-
-th {text-align: left;}
-</style>
-</head>
-<body>
-
 <?php
-$q = intval($_GET['q']);
 
 include("../config.php");
 
-$sql="SELECT * FROM player WHERE id = '".$q."'";
+$sql="SELECT * FROM player WHERE fname = '".$_GET['q']."' OR lname = '".$_GET['q']."'";
 $playerlist = $db->query($sql);
 $playerForm = '';
 
@@ -38,5 +18,3 @@ while ($player = $playerlist->fetch_assoc()){
 
 echo $playerForm;
 ?>
-</body>
-</html>
