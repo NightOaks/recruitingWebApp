@@ -23,27 +23,20 @@ $q = intval($_GET['q']);
 include("../config.php");
 
 $sql="SELECT * FROM player WHERE id = '".$q."'";
-$result = mysqli_query($con,$sql);
+$playerlist = $db->query($sql);
+$playerForm = '';
 
-echo "<table>
-<tr>
-<th>Firstname</th>
-<th>Lastname</th>
-<th>Age</th>
-<th>Hometown</th>
-<th>Job</th>
-</tr>";
-while($row = mysqli_fetch_array($result)) {
-    echo "<tr>";
-    echo "<td>" . $row['FirstName'] . "</td>";
-    echo "<td>" . $row['LastName'] . "</td>";
-    echo "<td>" . $row['Age'] . "</td>";
-    echo "<td>" . $row['Hometown'] . "</td>";
-    echo "<td>" . $row['Job'] . "</td>";
-    echo "</tr>";
+while ($player = $playerlist->fetch_assoc()){
+    $playerForm .= 
+        "<div>
+        <form action='infoRecruit.php' method='get'>
+        <input type='hidden' name='p_id' value=".$player['p_id']."/>
+        <input style='width:100%;'type='submit' value='".$player['fname']." ".$player['lname']." ".$player['year']." ".$player['hs']." ".$player['aau']."'>
+        </form>
+    </div>";
 }
-echo "</table>";
-mysqli_close($con);
+
+echo $playerForm;
 ?>
 </body>
 </html>
