@@ -4,17 +4,17 @@ include("../config.php");
 
 $q = $_GET['q'];
 
-$sql="SELECT fname, lname FROM player WHERE fname LIKE '%$q%' or lname LIKE '%$q%';;
+$sql="SELECT fname, lname FROM player WHERE fname LIKE '%" . $q . "%' or lname LIKE '%" . $q . "%'";
 
-$array[] = $db->query($sql);
+$result = $db->query($sql);
 
-foreach ($array as $results){
-    if (stripos($results, $q) !== false){
-        $list[] = $results;
-    }
+$list = [];
+while ($player = $result->fetch_assoc()) {
+    array_push($list, $player['fname'] . ' ' . $player['lname']);
 }
+
 
 $arrayEncoded = json_encode($list);
 
-echo $list;
+echo $arrayEncoded;
 ?>

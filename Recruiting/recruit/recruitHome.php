@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <script>
+      window.onload = function(){
+
         
         var input1 = document.getElementById("search");
     
@@ -27,7 +29,8 @@
             request.open("GET", path, true);
             request.send();
 
-    });
+        });
+      }
     
 </script>  
 
@@ -51,7 +54,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <form class="form-inline my-2 my-lg-0">
-              <input id="search" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
+              <input id="search" type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
             </form>
           </li>
 
