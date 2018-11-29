@@ -2,8 +2,12 @@
 
 include("../config.php");
 
-$sql="SELECT * FROM player WHERE fname = '".$_GET['q']."' OR lname = '".$_GET['q']."'";
+$q = $_GET['q'];
+
+$sql="SELECT fname, lname FROM player WHERE fname = '".$q."' OR lname = '".$q."'";
+
 $playerlist = $db->query($sql);
+
 $playerForm = '';
 
 while ($player = $playerlist->fetch_assoc()){
