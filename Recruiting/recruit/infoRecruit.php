@@ -21,9 +21,9 @@
 
   <body>
     <?php
-      echo '<img class="playerProfileImage" src="data:image/jpeg;base64,'.base64_encode($player['profileImage']).'"/>
+      echo '<img class="playerProfileImage" src="data:image/jpeg;base64,'.base64_encode($player['profileImage']).'"/>';
 
-      <h2 style="text-align: center;">'.$player['fname'].' '.$player['lname'].'</h2>
+      echo '<h2 style="text-align: center;">'.$player['fname'].' '.$player['lname'].'</h2>
       <p style="text-align: center;">'.$player['year'].'</p>
       <p style="text-align: center;">'.$player['hs'].'</p>
       <p style="text-align: center;">'.$player['aau'].'</p>';
