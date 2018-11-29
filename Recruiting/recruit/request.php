@@ -14,6 +14,10 @@ while ($player = $result->fetch_assoc()) {
 }
 
 $arrayEncoded = json_encode($list);
+if ($q == ""){
+    echo ""; 
+} else {
+    echo $arrayEncoded;
+}
 
-echo $arrayEncoded;
 ?>
