@@ -19,9 +19,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="myStyle.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <script>
+      function goBack() {
+          window.history.back();
+      }
+    </script>  
   </head>
 
   <body>
+    <button onclick="goBack()">Go Back</button>
     <h2>File uploading</h2>
     <form method="POST" name="upfrm" action="" enctype="multipart/form-data">
         <div>
@@ -46,7 +53,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
           <?php if(isset($error)){echo $error;}?>
         </strong>
       </div>
-    
-    <script src="script.js"></script>
   </body>
 </html>

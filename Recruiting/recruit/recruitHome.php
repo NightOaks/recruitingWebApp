@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <script>
+
       window.onload = function(){
 
         
@@ -31,12 +32,17 @@
 
         });
       }
+
+      function goBack() {
+          window.history.back();
+      }
     
 </script>  
 
   </head>
 
   <body>
+    <button onclick="goBack()">Go Back</button>
   	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
       <div class="navbar-collapse">
