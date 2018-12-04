@@ -52,11 +52,11 @@
 		                        <h3 class="text-center text-color">Login</h3>
 		                        <div class="form-group">
 		                            <label for="username" class="text-color">Username:</label><br>
-		                            <input type="text" name="username" id="username" class="form-control">
+		                            <input type="text" name="username" id="username" class="form-control" required>
 		                        </div>
 		                        <div class="form-group">
 		                            <label for="password" class="text-color">Password:</label><br>
-		                            <input type="password" name="password" id="password" class="form-control">
+		                            <input type="password" name="password" id="password" class="form-control" required>
 		                        </div>
 		                        <div class="form-group">
 		                            <input type="submit" name="submit" class="btn btn-md" value="Submit">

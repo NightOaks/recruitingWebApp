@@ -6,14 +6,16 @@
     $imageTmp="";
     $imageName=$_FILES["myimage"]["name"]; 
 
-    try {
-      if(file_get_contents($imageName) != FALSE ){
-        $imageTmp=addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
-      }
-    } catch (Exception $e) {
-    }
+    $imageTmp=addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
 
-    $sql = "INSERT INTO player(fname, lname, year, hs, aau, profileImage, profileName) VALUES ('$_POST[fname]', '$_POST[lname]', '$_POST[year]', '$_POST[hs]', '$_POST[aau]', '$imageTmp', '$imageName')";
+    
+    $fname = mysqli_real_escape_string($db, $_POST['fname']);
+    $lname = mysqli_real_escape_string($db, $_POST['lname']);
+    $year = mysqli_real_escape_string($db, $_POST['year']);
+    $hs = mysqli_real_escape_string($db, $_POST['hs']);
+    $aau = mysqli_real_escape_string($db, $_POST['aau']);
+    
+    $sql = "INSERT INTO player(fname, lname, year, hs, aau, profileImage, profileName) VALUES ('$fname', '$lname', '$year', '$hs', '$aau', '$imageTmp', '$imageName')";
     $db->query($sql);
 
     header("location: recruitHome.php");
