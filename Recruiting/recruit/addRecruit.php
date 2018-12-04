@@ -39,7 +39,7 @@
 
   <body>
     <button onclick="goBack()">Go Back</button>
-    <h2>File uploading</h2>
+    <h2>Add a Recruit</h2>
     <form method="POST" name="upfrm" action="" enctype="multipart/form-data">
         <div>
           First name:<br>
