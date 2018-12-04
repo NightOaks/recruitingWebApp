@@ -70,7 +70,7 @@
 
     <?php
       include("../config.php");
-      $sql = "SELECT * FROM player";
+      $sql = "SELECT * FROM player ORDER BY fname DESC";
       $playerlist = $db->query($sql);
       $playerForm = '';
 
