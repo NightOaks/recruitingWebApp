@@ -15,6 +15,8 @@
 
     $sql = "INSERT INTO player(fname, lname, year, hs, aau, profileImage, profileName) VALUES ('$_POST[fname]', '$_POST[lname]', '$_POST[year]', '$_POST[hs]', '$_POST[aau]', '$imageTmp', '$imageName')";
     $db->query($sql);
+
+    header("location: recruitHome.php");
   }
 ?>
 
