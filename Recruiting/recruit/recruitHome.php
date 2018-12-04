@@ -7,68 +7,62 @@
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="../myStyle.css">
-
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <script>
-
-      window.onload = function(){
-
-        
-        var input1 = document.getElementById("search");
+    window.onload = function(){
+      var input1 = document.getElementById("search");
+  
+      input1.addEventListener("input", function(event){
+          let request = new XMLHttpRequest();
+          request.onreadystatechange = function(){
+              if (request.readyState == 4 && request.status == 200){
+                  var response = request.responseText;
+                  //var parsedResponse = JSON.parse(response);
+                  document.getElementById("ajaxOutput").innerHTML = response;
+              }
+          }
+          var path = "request.php?q=" + document.getElementById("search").value;
+          request.open("GET", path, true);
+          request.send();
+      });
+    }
     
-        input1.addEventListener("input", function(event){
-            let request = new XMLHttpRequest();
-            request.onreadystatechange = function(){
-                if (request.readyState == 4 && request.status == 200){
-                    var response = request.responseText;
-                    //var parsedResponse = JSON.parse(response);
-                    document.getElementById("ajaxOutput").innerHTML = response;
-                }
-            }
-            var path = "request.php?q=" + document.getElementById("search").value;
-            request.open("GET", path, true);
-            request.send();
-
-        });
-      }
-
-      function goBack() {
-          window.history.back();
-      }
-    
-</script>  
-
+    function goBack() {
+        window.history.back();
+    }
+  </script>
   </head>
 
   <body>
-    <button onclick="goBack()">Go Back</button>
-  	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-      <div class="navbar-collapse">
+      <nav class="navbar navbar-default navbar-light bg-light">
+        <button class="nav-link" onclick="goBack()">Go Back</button>
         
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Recruit <span class="sr-only">(current)</span></a>
-          </li>
+        <div class="container-fluid">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Recruit <span class="sr-only">(current)</span></a>
+            </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="../game/gameHome.php">Game</a>
-          </li>
-        </ul>
+            <li class="nav-item">
+              <div class="nav-link">
+                <a class="nav-link" href="../game/gameHome.php">Game</a>
+              <div>
+            </li>
+          </ul>
 
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <form class="form-inline my-2 my-lg-0">
-              <input id="search" type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-            </form>
-          </li>
+          <ul class="navbar-nav ml-auto">
 
-          <li class="nav-item">
-            <a class="nav-link" href="addRecruit.php">Add</a>
-          </li>
-        </ul>
+            <li class="nav-item">
+              <a class="nav-link" href="addRecruit.php">Add Recruit</a>
+            </li>
 
+            <li class="nav-item">
+              <form class="form-inline my-2 my-lg-0">
+                <input id="search" type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
+              </form>
+            </li>
+          </ul>
       </div>
     </nav>
 
@@ -80,7 +74,6 @@
       $playerlist = $db->query($sql);
       $playerForm = '';
 
-
         while ($player = $playerlist->fetch_assoc()){
           $playerForm .= 
             "<div>
@@ -90,7 +83,6 @@
             </form>
           </div>";
         }
-
         echo $playerForm;
     ?>
   </body>

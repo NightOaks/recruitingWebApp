@@ -1,11 +1,9 @@
 <?php
-
 /*-- we included connection files--*/
   include "../config.php";
   $sql = "SELECT * FROM player WHERE p_id = '$_GET[p_id]'";
   $result = $db->query($sql);
   $player = $result->fetch_assoc();
-
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +23,7 @@
   </head>
 
   <body>
-    <button onclick="goBack()">Go Back</button>
+    <button class="nav-link" onclick="goBack()">Go Back</button>
     <?php
       if ($player['profileImage'] != NULL) {
       echo '<img class="playerProfileImage" src="data:image/jpeg;base64,'.base64_encode($player['profileImage']).'"/>';

@@ -12,7 +12,7 @@
   <body>
   <?php include('session.php'); ?>
     <div class="padding">
-      <h1>Welcome <?php echo $login_session; ?></h1>
+      <p class="welcome-color">Welcome, <?php echo $login_session; ?></p>
       <a href="recruit/recruitHome.php" class="btn btn-secondary btn-lg btn-block">Recruit</a>
       <br>
       <a href="game/gameHome.php" class="btn btn-secondary btn-lg btn-block">Game</a>

@@ -2,12 +2,17 @@
 body {
     background-color: #F5F5F5;
   }
+
+  .welcome-color {
+    color: #808080;
+  }
+
 .playerProfileImage {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-    height: 50%;
+    width: 25%;
+    height: 25%;
     object-fit: cover;
 }
   .padding {
@@ -46,8 +51,8 @@ body {
 
   .btn-secondary {
     color: #fff;
-    background-color: #6c757d;
-    border-color: #6c757d;
+    background-color: #808080;
+    border-color: #808080;
   }
 
 
@@ -61,6 +66,17 @@ body {
 }
 
 @media (min-width: 992px) {
+  .playerProfileImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    height: 25%;
+    object-fit: cover;
+}
+  .welcome-color {
+    color: #808080;
+  }
   .navbar-expand-lg {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -109,6 +125,17 @@ body {
 }
 /************** TABLET         */
 @media (max-width: 900px) {
+  .playerProfileImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    height: 25%;
+    object-fit: cover;
+}
+  .welcome-color {
+    color: #808080;
+  }
   body {
     background-color: #F5F5F5;
   }
@@ -149,8 +176,8 @@ body {
 
   .btn-secondary {
     color: #fff;
-    background-color: #6c757d;
-    border-color: #6c757d;
+    background-color: #808080;
+    border-color: #808080;
   }
 
 }
@@ -158,6 +185,17 @@ body {
 
 /************** PHONE         */
 @media (max-width: 600px) {
+  .playerProfileImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    height: 25%;
+    object-fit: cover;
+}
+  .welcome-color {
+    color: #808080;
+  }
 body {
     background-color: #F5F5F5;
   }
@@ -198,8 +236,8 @@ body {
 
   .btn-secondary {
     color: #fff;
-    background-color: #6c757d;
-    border-color: #6c757d;
+    background-color: #808080;
+    border-color: #808080;
   }
 
 
