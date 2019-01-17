@@ -23,8 +23,19 @@
   </head>
 
   <body>
-    <button class="nav-link" onclick="goBack()">Go Back</button>
+    <button class="nav-link" onclick="goBack()"><</button>
+
     <?php
+    echo"
+    <div>
+      <form action='editRecruit.php' method='get'>
+        <input type='hidden' name='p_id' value=".$player['p_id']."/>
+        <input type='submit' value='Edit'>
+      </form>
+    </div>";
+
+    
+
       if ($player['profileImage'] != NULL) {
       echo '<img class="playerProfileImage" src="data:image/jpeg;base64,'.base64_encode($player['profileImage']).'"/>';
       }
