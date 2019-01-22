@@ -3,8 +3,14 @@
 /*-- we included connection files--*/
   include "../config.php";
   $sql = "SELECT * FROM player WHERE p_id = '$_GET[p_id]'";
+  $sql1 = "SELECT high_school.name FROM player INNER JOIN high_school ON player.hs_id=high_school.hs_id WHERE p_id = '$_GET[p_id]'";
+  $sql2 = "SELECT aau.name FROM player INNER JOIN aau ON player.aau_id=aau.aau_id WHERE p_id = '$_GET[p_id]'";
   $result = $db->query($sql);
+  $result1 = $db->query($sql1);
+  $result2 = $db->query($sql2);
   $player = $result->fetch_assoc();
+  $hs = $result1->fetch_assoc();
+  $aau = $result2->fetch_assoc();
 
 ?>
 
@@ -38,8 +44,8 @@
 
       echo '<h2 style="text-align: center;">'.$player['fname'].' '.$player['lname'].'</h2>
       <p style="text-align: center;">'.$player['year'].'</p>
-      <p style="text-align: center;">'.$player['hs'].'</p>
-      <p style="text-align: center;">'.$player['aau'].'</p>';
+      <p style="text-align: center;">'.$hs['name'].'</p>
+      <p style="text-align: center;">'.$aau['name'].'</p>';
     ?>
   </body>
 </html>
