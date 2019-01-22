@@ -36,8 +36,6 @@
     </div>";
 
     
-
-      if ($player['profileImage'] != NULL) {
     if ($player['profileImage'] !=NULL){
       echo '<img class="playerProfileImage" src="data:image/jpeg;base64,'.base64_encode($player['profileImage']).'"/>';
     }
