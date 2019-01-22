@@ -34,65 +34,38 @@
 <!DOCTYPE html>
 	
 	<head>
-		<title>Login Page</title>
-		
-		<style type = "text/css">
-			body {
-				font-family:Arial, Helvetica, sans-serif;
-				font-size:14px;
-				background-color: #FFFFFF;
-			}
-			label {
-				font-weight:bold;
-				width:100px;
-				font-size:14px;
-			}
-			.box {
-				border:#666666 solid 1px;
-			}
-				
-			.overallBox {
-				text-align: center;
-			}
-			
-			.innerBox {
-				width: 300px;
-				border: solid 1px #333333;
-				text-align: left;
-			}
-			
-			.loginHeader {
-				background-color: #333333;
-				color: #FFFFFF;
-				padding: 3px;
-			}
-			
-			.inputBox {
-				margin: 30px;
-			}
-		</style>
-		
+		<title>Recruiting Login<title>
+    	<link rel="stylesheet" type="text/css" href="loginStyle.css">
+    	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
-	
-	<body>
-	
-		<div class = "overallBox">
-			<div class = "innerBox">
-				<div class = "loginHeader"><b>Login</b></div>
-				
-				<div class = "inputBox">
-					
-					<form method = "post">
-						<label>Username  :</label><input type = "text" name = "username" class = "box"/><br /><br />
-						<label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
-						<input type = "submit" value = " Submit "/><br />
-					</form>
-					
-				</div>
-				
-			</div>
-			
-		</div>
 
+	<body>
+		<div id="login">
+		    <div class="container">
+		        <div id="login-row" class="row justify-content-center align-items-center">
+		            <div id="login-column" class="col-md-12">
+		                <div class="login-box col-md-6">
+		                    <form id="login-form" class="form" action="" method="post">
+		                        <h3 class="text-center text-color">Login</h3>
+		                        <div class="form-group">
+		                            <label for="username" class="text-color">Username:</label><br>
+		                            <input type="text" name="username" id="username" class="form-control" required>
+		                        </div>
+		                        <div class="form-group">
+		                            <label for="password" class="text-color">Password:</label><br>
+		                            <input type="password" name="password" id="password" class="form-control" required>
+		                        </div>
+		                        <div class="form-group">
+		                            <input type="submit" name="submit" class="btn btn-md" value="Submit">
+		                        </div>
+		                    </form>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
 	</body>
 </html>

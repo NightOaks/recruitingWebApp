@@ -13,8 +13,11 @@ while ($player = $result->fetch_assoc()) {
     array_push($list, $player['fname'] . ' ' . $player['lname']);
 }
 
-
 $arrayEncoded = json_encode($list);
+if ($q == ""){
+    echo ""; 
+} else {
+    echo $arrayEncoded;
+}
 
-echo $arrayEncoded;
 ?>

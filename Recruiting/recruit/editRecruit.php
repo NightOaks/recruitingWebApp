@@ -1,21 +1,21 @@
 <?php
   /*-- we included connection files--*/
   include "../config.php";
+
+  $former = "SELECT * FROM player WHERE p_id = '$_GET[p_id]'";
+  $result = $db->query($former);
+  $player = $result->fetch_assoc();
+
   if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $imageName="";
-    $imageTmp="";
-    $imageName=$_FILES["myimage"]["name"]; 
 
-    $imageTmp=addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
-
-    
     $fname = mysqli_real_escape_string($db, $_POST['fname']);
     $lname = mysqli_real_escape_string($db, $_POST['lname']);
     $year = mysqli_real_escape_string($db, $_POST['year']);
     $hs = mysqli_real_escape_string($db, $_POST['hs']);
     $aau = mysqli_real_escape_string($db, $_POST['aau']);
     
-    $sql = "INSERT INTO player(fname, lname, year, hs, aau, profileImage, profileName) VALUES ('$fname', '$lname', '$year', '$hs', '$aau', '$imageTmp', '$imageName')";
+    $sql = "UPDATE player SET fname = '$fname', lname = '$lname', year = '$year', hs = '$hs', aau = '$aau' WHERE p_id = '$_GET[p_id]'";
+    
     $db->query($sql);
 
     header("location: recruitHome.php");
@@ -45,18 +45,16 @@
     <form method="POST" name="upfrm" action="" enctype="multipart/form-data">
         <div>
           First name:<br>
-          <input type="text" name="fname"><br>
+          <input type="text" name="fname" value="<?php echo $player['fname']?>"><br>
           Last name:<br>
-          <input type="text" name="lname"><br>
+          <input type="text" name="lname" value="<?php echo $player['lname']?>"><br>
           Year:<br>
-          <input type="text" name="year"><br>
+          <input type="text" name="year" value="<?php echo $player['year']?>"><br>
           High School:<br>
-          <input type="text" name="hs"><br>
+          <input type="text" name="hs" value="<?php echo $player['hs']?>"><br>
           AAU:<br>
-          <input type="text" name="aau"><br>
-          Enter Image Name:<br>
-          <input type="file" name="myimage" id="myimage" class="file_input" />
-          <input type="submit" value="Upload" name="btn_upload" id="btn_upload" class="btn" />
+          <input type="text" name="aau" value="<?php echo $player['aau']?>"><br>
+          <input type="submit" value="Submit" name="btn_edit" id="btn_edit" class="btn" />
         </div>
       </form>
   </body>
