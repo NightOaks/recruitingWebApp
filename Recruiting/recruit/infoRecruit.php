@@ -26,7 +26,7 @@
     <button class="nav-link" onclick="goBack()"><</button>
 
     <?php
-    echo"
+    echo "
     <div>
       <form action='editRecruit.php' method='get'>
         <input type='hidden' name='p_id' value=".$player['p_id']."/>

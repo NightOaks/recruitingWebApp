@@ -6,7 +6,7 @@
 
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="../myStyle.css">
+    <link rel="stylesheet" type="text/css" href="recruitList.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <script>
@@ -27,44 +27,22 @@
           request.send();
       });
     }
-    
-    function goBack() {
-        window.history.back();
-    }
   </script>
   </head>
 
   <body>
-      <nav class="navbar navbar-default navbar-light bg-light">
-        <button class="nav-link" onclick="goBack()">Go Back</button>
-        
-        <div class="container-fluid">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Recruit <span class="sr-only">(current)</span></a>
-            </li>
 
-            <li class="nav-item">
-              <div class="nav-link">
-                <a class="nav-link" href="../game/gameHome.php">Game</a>
-              <div>
-            </li>
-          </ul>
+    <div class="padding">
+      <p><a class="text-current" href="#">Recruit</a></p>
+      <p><a class="float-right text-color" href="addRecruit.php">Add Recruit</a></p>
+      <p ><a class="text-color" href="../game/gameHome.php">Game</a></p>
+      
+      <form class="form-inline my-2 my-lg-0">
+        <input id="search" type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
+      </form>
 
-          <ul class="navbar-nav ml-auto">
+    </div>
 
-            <li class="nav-item">
-              <a class="nav-link" href="addRecruit.php">Add Recruit</a>
-            </li>
-
-            <li class="nav-item">
-              <form class="form-inline my-2 my-lg-0">
-                <input id="search" type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-              </form>
-            </li>
-          </ul>
-      </div>
-    </nav>
 
     <p id="ajaxOutput"></p>
 
@@ -76,12 +54,12 @@
 
         while ($player = $playerlist->fetch_assoc()){
           $playerForm .= 
-            "<div>
-            <form action='infoRecruit.php' method='get'>
-            <input type='hidden' name='p_id' value=".$player['p_id']."/>
-            <input style='width:100%;'type='submit' value='".$player['fname']." ".$player['lname']." ".$player['year']."'>
-            </form>
-          </div>";
+            "<div class='padding'>
+              <form action='infoRecruit.php' method='get'>
+                <input type='hidden' name='p_id' value=".$player['p_id']."/>
+                <input class='btn-recruit' type='submit' value='".$player['fname']." ".$player['lname']." ".$player['year']."'>
+              </form>
+            </div>";
         }
         echo $playerForm;
     ?>

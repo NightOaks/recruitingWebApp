@@ -3,9 +3,13 @@ body {
     background-color: #F5F5F5;
   }
 
-  .welcome-color {
-    color: #808080;
+  .right-float {
+    float:right;
   }
+
+  .text-color {
+  color: #808080;
+}
 
 .playerProfileImage {
     display: block;
@@ -55,17 +59,6 @@ body {
     border-color: #808080;
   }
 
-
-
-@media (max-width: 991.98px) {
-  .navbar-expand-lg > .container,
-  .navbar-expand-lg > .container-fluid {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-
-@media (min-width: 992px) {
   .playerProfileImage {
     display: block;
     margin-left: auto;
@@ -122,9 +115,7 @@ body {
     top: auto;
     bottom: 100%;
   }
-}
-/************** TABLET         */
-@media (max-width: 900px) {
+
   .playerProfileImage {
     display: block;
     margin-left: auto;
@@ -180,22 +171,26 @@ body {
     border-color: #808080;
   }
 
-}
-
-
 /************** PHONE         */
-@media (max-width: 600px) {
-  .playerProfileImage {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25%;
-    height: 25%;
-    object-fit: cover;
+@media (min-width: 320px) and (max-width: 480px) {
+
+.float-right {
+  float: right;
+
 }
-  .welcome-color {
-    color: #808080;
-  }
+.text-color {
+  color: #808080;
+}
+
+.playerProfileImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+  height: 25%;
+  object-fit: cover;
+}
+  
 body {
     background-color: #F5F5F5;
   }
@@ -239,10 +234,6 @@ body {
     background-color: #808080;
     border-color: #808080;
   }
-
-
-
-
 
   .navbar {
   position: relative;
@@ -354,6 +345,9 @@ button.bg-light:focus {
   margin-left: auto !important;
 }
 
+
+
+
 .navbar-nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -367,15 +361,19 @@ button.bg-light:focus {
   list-style: none;
 }
 
+
 .navbar-nav .nav-link {
   padding-right: 0;
   padding-left: 0;
 }
 
+
+
 .navbar-nav .dropdown-menu {
   position: static;
   float: none;
 }
+
 
 .nav-tabs .nav-item {
   margin-bottom: -1px;
@@ -387,12 +385,21 @@ button.bg-light:focus {
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }
+
+
+
+
+}
+
+/*
+
 .nav-fill .nav-item {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   text-align: center;
 }
+
 
 .nav-justified .nav-item {
   -ms-flex-preferred-size: 0;
@@ -401,45 +408,4 @@ button.bg-light:focus {
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-align: center;
-}
-.nav-link {
-  display: block;
-  padding: 0.5rem 1rem;
-}
-
-.nav-link:hover, .nav-link:focus {
-  text-decoration: none;
-}
-
-.navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
-  color: rgba(0, 0, 0, 0.7);
-}
-
-.navbar-light .navbar-nav .nav-link.disabled {
-  color: rgba(0, 0, 0, 0.3);
-}
-
-.navbar-light .navbar-nav .show > .nav-link,
-.navbar-light .navbar-nav .active > .nav-link,
-.navbar-light .navbar-nav .nav-link.show,
-.navbar-light .navbar-nav .nav-link.active {
-  color: rgba(0, 0, 0, 0.9);
-}
-
-.form-inline {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-}
+}*/

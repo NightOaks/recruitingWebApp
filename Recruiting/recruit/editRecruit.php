@@ -6,8 +6,12 @@
   $result = $db->query($former);
   $player = $result->fetch_assoc();
 
+    echo '<script>myfunction()</script>';
+
   if($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    echo '<script>myfunction()</script>';
+    window.open('http://google.com');
     $fname = mysqli_real_escape_string($db, $_POST['fname']);
     $lname = mysqli_real_escape_string($db, $_POST['lname']);
     $year = mysqli_real_escape_string($db, $_POST['year']);
@@ -36,6 +40,11 @@
       function goBack() {
           window.history.back();
       }
+
+      function myFunction()
+{
+alert("I am an alert box!");
+}
     </script>  
   </head>
 
