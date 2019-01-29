@@ -21,7 +21,7 @@
     <title>IWU Recruiting</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../myStyle.css">
+    <link rel="stylesheet" type="text/css" href="recruit.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
 
@@ -31,21 +31,18 @@
     <div>
       <form action='editRecruit.php' method='get'>
         <input type='hidden' name='p_id' value=".$player['p_id']."/>
-        <input type='submit' value='Edit'>
+        <input class = 'btn text-color' type='submit' value='Edit'>
       </form>
     </div>";
 
-    
-
-      if ($player['profileImage'] != NULL) {
     if ($player['profileImage'] !=NULL){
       echo '<img class="playerProfileImage" src="data:image/jpeg;base64,'.base64_encode($player['profileImage']).'"/>';
     }
 
-      echo '<h2 style="text-align: center;">'.$player['fname'].' '.$player['lname'].'</h2>
-      <p style="text-align: center;">'.$player['year'].'</p>
-      <p style="text-align: center;">'.$hs['name'].'</p>
-      <p style="text-align: center;">'.$aau['name'].'</p>';
+      echo '<div class="padding"><p class="center">'.$player['fname'].' '.$player['lname'].'</p>
+      <p>'.$player['year'].'</p>
+      <p>'.$hs['name'].'</p>
+      <p>'.$aau['name'].'</p></div>';
     ?>
   </body>
 </html>

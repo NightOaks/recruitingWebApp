@@ -33,8 +33,10 @@
   <body>
 
     <div class="padding">
+      <div class = "padding">
       <p><a class="text-current" href="#">Recruit</a></p>
       <p><a class="float-right text-color" href="addRecruit.php">Add Recruit</a></p>
+    </div>
       <p ><a class="text-color" href="../game/gameHome.php">Game</a></p>
       
       <form class="form-inline my-2 my-lg-0">

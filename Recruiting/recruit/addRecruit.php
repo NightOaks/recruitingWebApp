@@ -15,8 +15,15 @@
     $hs = mysqli_real_escape_string($db, $_POST['hs']);
     $aau = mysqli_real_escape_string($db, $_POST['aau']);
     
-    $sql = "INSERT INTO player(fname, lname, year, hs, aau, profileImage, profileName) VALUES ('$fname', '$lname', '$year', '$hs', '$aau', '$imageTmp', '$imageName')";
+    $sql = "INSERT INTO player(fname, lname, year, profileImage, profileName) VALUES ('$fname', '$lname', '$year', '$imageTmp', '$imageName')";
     $db->query($sql);
+
+    $sql1 = "INSERT INTO aau(name) VALUES ('$aau')";
+    $db->query($sql1);
+    
+    $sql2 = "INSERT INTO high_school(name) VALUES ('$hs')";
+    $db->query($sql2);
+
 
     header("location: recruitHome.php");
   }
@@ -29,35 +36,36 @@
     <title>IWU Recruiting</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="myStyle.css">
+    <link rel="stylesheet" type="text/css" href="recruit.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
-    <script>
-      function goBack() {
-          window.history.back();
-      }
-    </script>  
+ 
   </head>
 
   <body>
-    <button onclick="goBack()">Go Back</button>
-    <h2>Add a Recruit</h2>
+    <div class="padding">
+      <p class="center">New Recruit</p>
+    
+    <p><a class="float-right" href="recruitHome.php">Cancel</a></p>
+    
     <form method="POST" name="upfrm" action="" enctype="multipart/form-data">
-        <div>
-          First name:<br>
-          <input type="text" name="fname"><br>
-          Last name:<br>
-          <input type="text" name="lname"><br>
-          Year:<br>
-          <input type="text" name="year"><br>
-          High School:<br>
-          <input type="text" name="hs"><br>
-          AAU:<br>
-          <input type="text" name="aau"><br>
-          Enter Image Name:<br>
-          <input type="file" name="myimage" id="myimage" class="file_input" />
-          <input type="submit" value="Upload" name="btn_upload" id="btn_upload" class="btn" />
+        
+          <input type="submit" value="Done" name="btn_upload" id="btn_upload" class="btn text-color" />
+          <div> 
+          <input class="margin" type="text" placeholder="First name" name="fname"><br>
+          
+          <input class="margin" type="text" placeholder="Last name" name="lname"><br>
+          
+          <input class="margin" type="text" placeholder="Year" name="year"><br>
+          
+          <input class="margin" type="text" placeholder="High school" name="hs"><br>
+          
+          <input class="margin" type="text" placeholder="AAU team" name="aau"><br>
+          
+          <p>Enter Image Name:</p>
+          <input type="file" name="myimage" id="myimage" class="file_input text-color" />
+          
         </div>
-      </form>
+    </form>
+    </div>
   </body>
 </html>

@@ -1,0 +1,93 @@
+body {
+background-color: #F5F5F5;
+}
+
+.right-float {
+float:right;
+}
+
+.center {
+	text-align: center;
+	font-size: 130%;
+}
+
+.header-font {
+	font-size: 140%;
+}
+
+.text-color {
+color: #808080;
+}
+
+.margin {
+	margin: 8px;
+}
+
+a {
+color: #808080;
+}
+
+p {
+color: #808080;
+}
+
+.text-current {
+color: #404040;
+}
+
+.playerProfileImage {
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 25%;
+height: 25%;
+object-fit: cover;
+}
+.padding {
+padding: 10px;
+}
+
+.btn {
+display: inline-block;
+font-weight: 400;
+text-align: center;
+white-space: nowrap;
+vertical-align: middle;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+border: 1px solid transparent;
+padding: 0.375rem 0.75rem;
+font-size: 1rem;
+line-height: 1.5;
+border-radius: 0.25rem;
+transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-block {
+display: block;
+width: 100%;
+}
+
+.btn-lg {
+padding: 0.5rem 1rem;
+font-size: 40px;
+line-height: 9;
+border-radius: 0.3rem;
+}
+
+.btn-secondary {
+color: #fff;
+background-color: #808080;
+border-color: #808080;
+}
+
+.btn-recruit {
+text-align: left;
+color: #404040;
+background-color: #F5F5F5;
+border-color: #F5F5F5;
+border-bottom: double;
+width: 100%;
+}
