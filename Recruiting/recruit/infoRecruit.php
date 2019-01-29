@@ -34,6 +34,14 @@
         <input type='submit' value='Edit'>
       </form>
     </div>";
+    
+    echo "
+    <div>
+      <form action='deleteRecruit.php' method='post'>
+        <input type='hidden' name='p_id' value=".$player['p_id'].">
+        <input type='submit' value='Delete'>
+      </form>
+    </div>";
 
     
     if ($player['profileImage'] !=NULL){
