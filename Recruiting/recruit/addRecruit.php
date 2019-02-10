@@ -15,14 +15,29 @@
     $hs = mysqli_real_escape_string($db, $_POST['hs']);
     $aau = mysqli_real_escape_string($db, $_POST['aau']);
     
-    $sql = "INSERT INTO player(fname, lname, year, profileImage, profileName) VALUES ('$fname', '$lname', '$year', '$imageTmp', '$imageName')";
-    $db->query($sql);
-
-    $sql1 = "INSERT INTO aau(name) VALUES ('$aau')";
-    $db->query($sql1);
     
-    $sql2 = "INSERT INTO high_school(name) VALUES ('$hs')";
-    $db->query($sql2);
+
+    $hsID = mysql_query("SELECT hs_id FROM high_school WHERE name='$hs'");
+
+    if(mysql_num_rows($query) == 0)
+	{
+		$sql2 = "INSERT INTO high_school(name) VALUES ('$hs')";
+    	$db->query($sql2);
+    	$hsID = mysql_query("SELECT hs_id FROM high_school WHERE name='$hs'")
+	}
+
+    $aauID = mysql_query("SELECT aau_id FROM aau WHERE name='$aau'");
+
+    if(mysql_num_rows($query) == 0)
+	{
+		$sql1 = "INSERT INTO aau(name) VALUES ('$aau')";
+    	$db->query($sql1);
+    	$aauID = mysql_query("SELECT aau_id FROM aau WHERE name='$aau'");
+	}
+
+
+    $sql = "INSERT INTO player(fname, lname, year, profileImage, profileName, hs_id, aau_id) VALUES ('$fname', '$lname', '$year', '$imageTmp', '$imageName', '$hsID', '$aauID')";
+    $db->query($sql);
 
 
     header("location: recruitHome.php");
