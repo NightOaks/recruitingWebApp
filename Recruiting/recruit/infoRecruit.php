@@ -51,6 +51,12 @@
       <p>'.$player['year'].'</p>
       <p>'.$hs['name'].'</p>
       <p>'.$aau['name'].'</p></div>';
+
+      echo '<div class="black-border"><p class="center">'.$player['fname'].' '.$player['lname'].'</p>
+      <p class="center">'.$player['year'].'</p>
+      <p class="center">'.$hs['name'].'</p>
+      <p class="center">'.$aau['name'].'</p></div>';
+
     ?>
   </body>
 </html>

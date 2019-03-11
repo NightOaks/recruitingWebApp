@@ -4,40 +4,68 @@
   if($_SERVER["REQUEST_METHOD"] == "POST") {
     $imageName="";
     $imageTmp="";
+    $hsID = "";
+    $aauID = "";
     $imageName=$_FILES["myimage"]["name"]; 
 
-    $imageTmp=addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
+    if ($imageName != 0) {
+      $imageTmp=addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
+    }
 
-    
     $fname = mysqli_real_escape_string($db, $_POST['fname']);
     $lname = mysqli_real_escape_string($db, $_POST['lname']);
     $year = mysqli_real_escape_string($db, $_POST['year']);
     $hs = mysqli_real_escape_string($db, $_POST['hs']);
     $aau = mysqli_real_escape_string($db, $_POST['aau']);
-    
-    
 
-    $hsID = mysql_query("SELECT hs_id FROM high_school WHERE name='$hs'");
-
-    if(mysql_num_rows($query) == 0)
-	{
-		$sql2 = "INSERT INTO high_school(name) VALUES ('$hs')";
+    
+/*
+    $hsID = mysqli_query("SELECT hs_id FROM high_school WHERE name='$hs'");
+    if(mysqli_num_rows($hsID) == 0)
+    {
+		  $sql2 = "INSERT INTO high_school(name) VALUES ('$hs')";
     	$db->query($sql2);
-    	$hsID = mysql_query("SELECT hs_id FROM high_school WHERE name='$hs'")
-	}
+    	$hsID = mysqli_query("SELECT hs_id FROM high_school WHERE name='$hs'");
+    }
+*/
+    /*$aauID = mysqli_query($db, "SELECT * FROM aau WHERE name='$aau'");
 
-    $aauID = mysql_query("SELECT aau_id FROM aau WHERE name='$aau'");
+    $checkrows = mysqli_num_rows($aauID);
 
-    if(mysql_num_rows($query) == 0)
-	{
-		$sql1 = "INSERT INTO aau(name) VALUES ('$aau')";
-    	$db->query($sql1);
-    	$aauID = mysql_query("SELECT aau_id FROM aau WHERE name='$aau'");
-	}
+   if($checkrows==0) {
+      $sql1 = "INSERT INTO aau(name) VALUES ('$aau')";
+      $db->query($sql1);
+    }
 
+    $aauID = mysqli_query($db, "SELECT * FROM aau WHERE name='$aau'");
 
-    $sql = "INSERT INTO player(fname, lname, year, profileImage, profileName, hs_id, aau_id) VALUES ('$fname', '$lname', '$year', '$imageTmp', '$imageName', '$hsID', '$aauID')";
-    $db->query($sql);
+    while ($aauRow = mysqli_fetch_array($aauID))
+    {
+      // escape your strings
+        foreach($aauRow as $key => $val)
+      {
+          $aauRow[$key] = mysqli_real_escape_string($db, $aauRow[$key]);
+      }
+    }*/
+    if ($db->query("SELECT aau_id FROM aau WHERE name='$aau'")) {
+
+      $sql1 = "INSERT INTO auu (name) VALUES ('$aau')";
+      $db->query($sql1);
+    }
+
+      $lookupID = mysqli_query($db, "SELECT aau_id FROM aau WHERE name='$aau'");
+    
+
+    $row = mysqli_fetch_row($lookupID);
+    $aauID = $row[0];
+
+    $sql4 = "INSERT INTO player (fname, lname, aau_id) VALUES ('$fname', '$lname', '$aauID')";
+
+    $db->query($sql4);
+
+    /*$sql = "INSERT INTO player(fname, lname, year, profileImage, profileName, hs_id, aau_id) VALUES ('$_POST[fname]', '$_POST[lname]', '$_POST[year]', '$imageTmp', '$imageName', '$hsID', '$aauID')";*/
+
+    //$db->query($sql);
 
 
     header("location: recruitHome.php");
@@ -76,7 +104,7 @@
           
           <input class="margin" type="text" placeholder="AAU team" name="aau"><br>
           
-          <p>Enter Image Name:</p>
+          <p>Choose profile image:</p>
           <input type="file" name="myimage" id="myimage" class="file_input text-color" />
           
         </div>
