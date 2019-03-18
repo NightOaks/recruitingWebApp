@@ -6,6 +6,24 @@ background-color: #F5F5F5;
 float:right;
 }
 
+.left-float {
+float:left;
+}
+
+.center-align {
+	text-align: center;
+}
+
+.btn-border {
+	text-align: center;
+	border: 1px solid black;
+	width: 150px;
+	padding: 10px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .center {
 	text-align: center;
 	font-size: 130%;

@@ -46,7 +46,8 @@
       {
           $aauRow[$key] = mysqli_real_escape_string($db, $aauRow[$key]);
       }
-    }*/
+    }
+
     if ($db->query("SELECT aau_id FROM aau WHERE name='$aau'")) {
 
       $sql1 = "INSERT INTO auu (name) VALUES ('$aau')";
@@ -57,13 +58,15 @@
     
 
     $row = mysqli_fetch_row($lookupID);
-    $aauID = $row[0];
+    $aauID = $row[0];*/
 
-    $sql4 = "INSERT INTO player (fname, lname, aau_id) VALUES ('$fname', '$lname', '$aauID')";
+    $sql4 = "INSERT INTO player (fname, lname) VALUES ('$fname', '$lname')";
 
     $db->query($sql4);
 
-    /*$sql = "INSERT INTO player(fname, lname, year, profileImage, profileName, hs_id, aau_id) VALUES ('$_POST[fname]', '$_POST[lname]', '$_POST[year]', '$imageTmp', '$imageName', '$hsID', '$aauID')";*/
+    /*$sql = "INSERT INTO player(fname, lname, year, profileImage, profileName, hs_id, aau_id) VALUES ('$_POST[fname]', '$_POST[lname]', '$_POST[year]', '$imageTmp', '$imageName', '$hsID', '$aauID')";
+
+     $sql = "INSERT INTO player(fname, lname, year, profileImage, profileName, hs_id, aau_id) VALUES ('$fname', '$lname', '$year', '$imageTmp', '$imageName', '$hsID', '$aauID')";*/
 
     //$db->query($sql);
 

@@ -52,10 +52,14 @@
       <p>'.$hs['name'].'</p>
       <p>'.$aau['name'].'</p></div>';
 
-      echo '<div class="black-border"><p class="center">'.$player['fname'].' '.$player['lname'].'</p>
-      <p class="center">'.$player['year'].'</p>
-      <p class="center">'.$hs['name'].'</p>
-      <p class="center">'.$aau['name'].'</p></div>';
+
+      echo "<div class='black-border'>
+      <form action='addEval.php' method='get'>
+        <input type='hidden' name='p_id' value=".$player['p_id']."/>
+        <input class = 'btn text-color' type='submit' value='Evaluations'>
+      </form>
+      <hr>
+      </div>";
 
     ?>
   </body>
