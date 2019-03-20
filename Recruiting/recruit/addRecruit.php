@@ -17,7 +17,6 @@
     $year = mysqli_real_escape_string($db, $_POST['year']);
     $hs = mysqli_real_escape_string($db, $_POST['hs']);
     $aau = mysqli_real_escape_string($db, $_POST['aau']);
-    
 
     $sql1 = "INSERT INTO high_school (name) VALUES ('$hs')";
     $db->query($sql1);
@@ -59,12 +58,12 @@
       <p class="center">New Recruit</p>
     
 
-    <p><a class="float-right" href="recruitHome.php">Cancel</a></p>
-    
-    <form method="POST" name="upfrm" action="" enctype="multipart/form-data">
-        
-          <input type="submit" value="Done" name="btn_upload" id="btn_upload" class="btn text-color" />
-          <div> 
+      <p><a class="float-right" href="recruitHome.php">Cancel</a></p>
+      
+      <form method="POST" name="upfrm" action="" enctype="multipart/form-data">
+      
+        <input type="submit" value="Done" name="btn_upload" id="btn_upload" class="btn text-color" />
+        <div> 
           <input class="margin" type="text" placeholder="First name" name="fname"><br>
           
           <input class="margin" type="text" placeholder="Last name" name="lname"><br>
@@ -79,7 +78,7 @@
           <input type="file" name="myimage" id="myimage" class="file_input text-color" />
           
         </div>
-    </form>
+      </form>
     </div>
   </body>
 </html>

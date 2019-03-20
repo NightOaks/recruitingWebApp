@@ -1,17 +1,16 @@
 <?php
   /*-- we included connection files--*/
   include "../config.php";
-  if($_SERVER["REQUEST_METHOD"] == "POST") {
+  //$p_id = $player['p_id'];
 
-    $comment = mysqli_real_escape_string($db, $_POST['comment']);
-    $p_id = "SELECT p_id FROM player WHERE p_id = '$_GET[p_id]'";
+  if($_SERVER["REQUEST_METHOD"] == "GET") {
 
+    $comment = mysqli_real_escape_string($db, $_GET['comment']);
 
-     $sql = "INSERT INTO evaluation(comment) VALUES ('$comment')";
+    $sql = "INSERT INTO evaluation (p_id, comment) VALUES ($p_id, $comment)";
+	$db->query($sql);
 
-    $db->query($sql);
-
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    header('location: recruitHome.php');
   }
 ?>
 
@@ -33,12 +32,13 @@
     
     <p><a class="float-right" href="recruitHome.php">Cancel</a></p>
     
-    <form method="POST" name="upfrm" action="" enctype="multipart/form-data">
+    <form method="GET" name="upfrm" action="" enctype="multipart/form-data">
         
           <input type="submit" value="Done" name="btn_upload" id="btn_upload" class="btn text-color" />
+
           <div> 
 
-          <input class="margin" type="text" placeholder="Comment" name="comment"><br>
+          <input class="margin" type="text" placeholder="Evaluation" name="evaluation"><br>
 
         </div>
     </form>

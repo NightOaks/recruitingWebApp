@@ -2,23 +2,17 @@
   /*-- we included connection files--*/
   include "../config.php";
 
-  $former = "SELECT * FROM player WHERE p_id = '$_GET[p_id]'";
-  $result = $db->query($former);
+  $sql = "SELECT * FROM player WHERE p_id ='$_POST[p_id]'";
+  $sql1 = "SELECT high_school.name FROM player INNER JOIN high_school ON player.hs_id=high_school.hs_id WHERE p_id = '$_POST[p_id]'";
+  $sql2 = "SELECT aau.name FROM player INNER JOIN aau ON player.aau_id=aau.aau_id WHERE p_id = '$_POST[p_id]'";
+  $result = $db->query($sql);
+  $result1 = $db->query($sql1);
+  $result2 = $db->query($sql2);
   $player = $result->fetch_assoc();
-  
-  $high_school_query = "SELECT * FROM high_school WHERE hs_id = '$player[hs_id]'";
-  $hs_result = $db->query($high_school_query);
-  $hs_actual = $hs_result->fetch_assoc();
-  
-  $aau_query = "SELECT * FROM aau WHERE aau_id = '$player[aau_id]'";
-  $aau_result = $db->query($aau_query);
-  $aau_actual = $aau_result->fetch_assoc();
-  
-  
+  $hs = $result1->fetch_assoc();
+  $aau = $result2->fetch_assoc();
 
-    echo '<script>myfunction()</script>';
-
-  if($_SERVER["REQUEST_METHOD"] == "POST") {
+  if($_SERVER["REQUEST_METHOD"] == "GET") {
 
     echo '<script>myfunction()</script>';
     $fname = mysqli_real_escape_string($db, $_POST['fname']);
@@ -27,29 +21,16 @@
     $hs = mysqli_real_escape_string($db, $_POST['hs']);
     $aau = mysqli_real_escape_string($db, $_POST['aau']);
     
-    $sql = "UPDATE player SET fname = '$fname', lname = '$lname', year = '$year' WHERE p_id = '$_GET[p_id]'";
+    $sql = "UPDATE player SET fname = '$fname', lname = '$lname', year = '$year' WHERE p_id = '$_POST[p_id]'";
     $db->query($sql);
     
-    $hs_sql = "INSERT INTO high_school (name) VALUES ('$hs')";
-    $db->query($hs_sql);
-    $hs_query2 = "SELECT hs_id FROM high_school WHERE name = '$hs'";
-    $hs_result2 = $db->query($hs_query2);
-    $hs_actual2 = $hs_result2->fetch_assoc();
-    $new_hs_id = $hs_actual2['hs_id'];
-    
-    $aau_sql = "INSERT INTO aau (name) VALUES ('$aau')";
-    $db->query($aau_sql);
-    $aau_query2 = "SELECT aau_id FROM aau WHERE name = '$aau'";
-    $aau_result2 = $db->query($aau_query2);
-    $aau_actual2 = $aau_result2->fetch_assoc();
-    $new_aau_id = $aau_actual2['aau_id'];
-    // $sql_update = "UPDATE player SET hs_id = '$new_hs_id', aau_id = '$new_aau_id' WHERE p_id = '$_GET[p_id]'";
-    
-    
-        
-    // $db->query($sql_update);
+    $sql1 = "UPDATE hs SET name = '$hs' WHERE hs_id = '$_POST[hs_id]'";
+    $db->query($sql1);
 
-    header("location: recruitHome.php");
+    $sql2 = "UPDATE player SET aau = '$aau'WHERE aau_id = '$_POST[aau_id]'";
+    $db->query($sql2);
+
+    //header("location: recruitHome.php");
   }
 ?>
 
@@ -60,25 +41,19 @@
     <title>IWU Recruiting</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="myStyle.css">
+    <link rel="stylesheet" type="text/css" href="recruit.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <script>
-      function goBack() {
-          window.history.back();
-      }
-
-      function myFunction()
-{
-alert("I am an alert box!");
-}
-    </script>  
   </head>
 
   <body>
-    <button onclick="goBack()">Go Back</button>
-    <h2>Add a Recruit</h2>
-    <form method="POST" name="upfrm" action="" enctype="multipart/form-data">
+    <p class="center">Edit Recruit</p>
+    
+
+    <p><a class="float-right" href="recruitHome.php">Cancel</a></p>
+
+    <form method="GET" name="upfrm" action="" enctype="multipart/form-data">
+      <input type="submit" value="Update" name="btn_edit" id="btn_edit" class="btn" />
         <div>
           First name:<br>
           <input type="text" name="fname" value="<?php echo $player['fname']?>"><br>
@@ -87,10 +62,10 @@ alert("I am an alert box!");
           Year:<br>
           <input type="text" name="year" value="<?php echo $player['year']?>"><br>
           High School:<br>
-          <input type="text" name="hs" value="<?php echo $hs_actual['name']?>"><br>
+          <input type="text" name="hs" value="<?php echo $hs['name']?>"><br>
           AAU:<br>
-          <input type="text" name="aau" value="<?php echo $aau_actual['name']?>"><br>
-          <input type="submit" value="Submit" name="btn_edit" id="btn_edit" class="btn" />
+          <input type="text" name="aau" value="<?php echo $aau['name']?>"><br>
+          
         </div>
       </form>
   </body>

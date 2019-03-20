@@ -41,8 +41,8 @@
 
     echo "
     <div>
-      <form action='editRecruit.php' method='get'>
-        <input type='hidden' name='p_id' value=".$player['p_id']."/>
+      <form action='editRecruit.php' method='post'>
+        <input type='hidden' name='p_id' value=".$player['p_id'].">
         <input class = 'btn text-color' type='submit' value='Edit'>
       </form>
     </div>";
@@ -59,8 +59,8 @@
 
 
       echo "<div class='black-border'>
-      <form action='addEval.php' method='get'>
-        <input type='hidden' name='p_id' value=".$player['p_id']."/>
+      <form action='addEval.php' method='post'>
+        <input type='hidden' name='p_id' value=".$player['p_id'].">
         <input class = 'btn text-color' type='submit' value='Evaluations'>
       </form>
       <hr>
