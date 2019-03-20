@@ -4,11 +4,11 @@
   if($_SERVER["REQUEST_METHOD"] == "POST") {
     $imageName="";
     $imageTmp="";
-    $hsID = "";
-    $aauID = "";
-    $imageName=$_FILES["myimage"]["name"]; 
+    $imageName=$_FILES["myimage"]["name"];
+    $finalhsid = NULL;
+    $finalaauid = NULL; 
 
-    if ($imageName != 0) {
+    if (!$imageName) {
       $imageTmp=addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
     }
 
@@ -17,59 +17,26 @@
     $year = mysqli_real_escape_string($db, $_POST['year']);
     $hs = mysqli_real_escape_string($db, $_POST['hs']);
     $aau = mysqli_real_escape_string($db, $_POST['aau']);
-
-    
-/*
-    $hsID = mysqli_query("SELECT hs_id FROM high_school WHERE name='$hs'");
-    if(mysqli_num_rows($hsID) == 0)
-    {
-		  $sql2 = "INSERT INTO high_school(name) VALUES ('$hs')";
-    	$db->query($sql2);
-    	$hsID = mysqli_query("SELECT hs_id FROM high_school WHERE name='$hs'");
-    }
-*/
-    /*$aauID = mysqli_query($db, "SELECT * FROM aau WHERE name='$aau'");
-
-    $checkrows = mysqli_num_rows($aauID);
-
-   if($checkrows==0) {
-      $sql1 = "INSERT INTO aau(name) VALUES ('$aau')";
-      $db->query($sql1);
-    }
-
-    $aauID = mysqli_query($db, "SELECT * FROM aau WHERE name='$aau'");
-
-    while ($aauRow = mysqli_fetch_array($aauID))
-    {
-      // escape your strings
-        foreach($aauRow as $key => $val)
-      {
-          $aauRow[$key] = mysqli_real_escape_string($db, $aauRow[$key]);
-      }
-    }
-
-    if ($db->query("SELECT aau_id FROM aau WHERE name='$aau'")) {
-
-      $sql1 = "INSERT INTO auu (name) VALUES ('$aau')";
-      $db->query($sql1);
-    }
-
-      $lookupID = mysqli_query($db, "SELECT aau_id FROM aau WHERE name='$aau'");
     
 
-    $row = mysqli_fetch_row($lookupID);
-    $aauID = $row[0];*/
+    $sql1 = "INSERT INTO high_school (name) VALUES ('$hs')";
+    $db->query($sql1);
 
-    $sql4 = "INSERT INTO player (fname, lname) VALUES ('$fname', '$lname')";
+    $sql3 = "SELECT hs_id FROM high_school WHERE name = '$hs'";
+    $hsid = $db->query($sql3);
+    $resulthsid = $hsid->fetch_array(MYSQLI_NUM);
+    $finalhsid = $resulthsid[0];
+  
+    $sql2 = "INSERT INTO aau (name) VALUES ('$aau')";
+    $db->query($sql2);
 
-    $db->query($sql4);
+    $sql4 = "SELECT aau_id FROM aau WHERE name = '$aau'";
+    $aauid = $db->query($sql4);
+    $resultaauid = $aauid->fetch_array(MYSQLI_NUM);
+    $finalaauid = $resultaauid[0];
 
-    /*$sql = "INSERT INTO player(fname, lname, year, profileImage, profileName, hs_id, aau_id) VALUES ('$_POST[fname]', '$_POST[lname]', '$_POST[year]', '$imageTmp', '$imageName', '$hsID', '$aauID')";
-
-     $sql = "INSERT INTO player(fname, lname, year, profileImage, profileName, hs_id, aau_id) VALUES ('$fname', '$lname', '$year', '$imageTmp', '$imageName', '$hsID', '$aauID')";*/
-
-    //$db->query($sql);
-
+    $sql = "INSERT INTO player(fname, lname, year, profileImage, profileName, hs_id, aau_id) VALUES ('$fname', '$lname', '$year', '$imageTmp', '$imageName', '$finalhsid', '$finalaauid')";
+    $db->query($sql);
 
     header("location: recruitHome.php");
   }
@@ -91,6 +58,7 @@
     <div class="padding">
       <p class="center">New Recruit</p>
     
+
     <p><a class="float-right" href="recruitHome.php">Cancel</a></p>
     
     <form method="POST" name="upfrm" action="" enctype="multipart/form-data">

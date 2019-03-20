@@ -26,7 +26,19 @@
   </head>
 
   <body>
+    <p><a href="recruitHome.php">Back</a></p>
     <?php
+
+    echo "
+    <div class='float-right'>
+      <form action='deleteRecruit.php' method='post'>
+        <input type='hidden' name='p_id' value=".$player['p_id'].">
+        <input type='hidden' name='hs_id' value=".$player['hs_id'].">
+        <input type='hidden' name='aau_id' value=".$player['aau_id'].">
+        <input class = 'btn text-color' type='submit' value='Delete'>
+      </form>
+    </div>";
+
     echo "
     <div>
       <form action='editRecruit.php' method='get'>
@@ -35,13 +47,6 @@
       </form>
     </div>";
     
-    echo "
-    <div>
-      <form action='deleteRecruit.php' method='post'>
-        <input type='hidden' name='p_id' value=".$player['p_id'].">
-        <input type='submit' value='Delete'>
-      </form>
-    </div>";
 
     if ($player['profileImage'] !=NULL){
       echo '<img class="playerProfileImage" src="data:image/jpeg;base64,'.base64_encode($player['profileImage']).'"/>';
