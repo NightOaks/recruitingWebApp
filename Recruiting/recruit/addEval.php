@@ -1,16 +1,17 @@
 <?php
   /*-- we included connection files--*/
   include "../config.php";
-  //$p_id = $player['p_id'];
+
 
   if($_SERVER["REQUEST_METHOD"] == "GET") {
 
-    $comment = mysqli_real_escape_string($db, $_GET['comment']);
+    $p_id = $_POST["p_id"];
+    $comment = mysqli_real_escape_string($db, $_GET['evaluation']);
 
-    $sql = "INSERT INTO evaluation (p_id, comment) VALUES ($p_id, $comment)";
-	$db->query($sql);
+    $sql = "INSERT INTO evaluation (p_id, comment) VALUES ($p_id, '$comment')";
+	 $db->query($sql);
 
-    header('location: recruitHome.php');
+    //header('location: recruitHome.php');
   }
 ?>
 
