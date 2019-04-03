@@ -33,7 +33,7 @@
     <form method='post' name='upfrm' action='evalDB.php' enctype='multipart/form-data'>
         
           <input type='submit' value='Done' name='btn_upload' id='btn_upload' class='btn text-color' />
-          <input type='hidden' name='p_id' value=".$p_id.">
+          <input type='hidden' name='p_id' value=".$p_id."/>
           <div> 
 
           <input class='margin' type='text' placeholder='Evaluation' name='evaluation'><br>
