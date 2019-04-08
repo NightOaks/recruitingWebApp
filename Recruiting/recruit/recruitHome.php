@@ -8,48 +8,23 @@
 
     <link rel="stylesheet" type="text/css" href="recruitList.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <script>
-    window.onload = function(){
-      var input1 = document.getElementById("search");
-  
-      input1.addEventListener("input", function(event){
-          let request = new XMLHttpRequest();
-          request.onreadystatechange = function(){
-              if (request.readyState == 4 && request.status == 200){
-                  var response = request.responseText;
-                  //var parsedResponse = JSON.parse(response);
-                  document.getElementById("ajaxOutput").innerHTML = response;
-              }
-          }
-          var path = "request.php?q=" + document.getElementById("search").value;
-          request.open("GET", path, true);
-          request.send();
-      });
-    }
-  </script>
+    
   </head>
 
+  <?php include('../session.php'); ?>
   <body>
 
     <div class="padding">
       <div class = "padding">
-      <p><a class="text-current" href="#">Recruit</a></p>
-      <p><a class="float-right text-color" href="addRecruit.php">Add Recruit</a></p>
-    </div>
-      
-      
-      <form class="form-inline my-2 my-lg-0">
-        <input id="search" type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-      </form>
+        <h1>Welcome <?php echo $login_session; ?></h1>
+        <p><a class="float-right text-color" href="../logout.php">Logout</a></p>
+        <p><a class="text-current" href="addRecruit.php">Add Recruit</a></p>
+      </div>
 
     </div>
-
-
-    <p id="ajaxOutput"></p>
 
     <?php
-      include("../config.php");
+      #error_reporting(E_ERROR | E_PARSE);
       $sql = "SELECT * FROM player ORDER BY fname ASC";
       $playerlist = $db->query($sql);
       $playerForm = '';
