@@ -3,10 +3,8 @@
   include "../config.php";
     $p_id = $_GET['p_id'];
     #$comment = mysqli_real_escape_string($db, $_GET['evaluation']);
-
     #$sql = "INSERT INTO evaluation (p_id, comment) VALUES ($p_id, '$comment')";
 	 #$db->query($sql);
-
     //header('location: recruitHome.php');
 ?>
 
@@ -33,11 +31,9 @@
     <form method='post' name='upfrm' action='evalDB.php' enctype='multipart/form-data'>
         
           <input type='submit' value='Done' name='btn_upload' id='btn_upload' class='btn text-color' />
-          <input type='hidden' name='p_id' value=".$p_id."/>
+          <input type='hidden' name='p_id' value=".$p_id.">
           <div> 
-
           <input class='margin' type='text' placeholder='Evaluation' name='evaluation'><br>
-
         </div>
     </form>
     </div>

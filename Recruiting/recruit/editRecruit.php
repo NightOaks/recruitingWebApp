@@ -12,26 +12,6 @@
   $hs = $result1->fetch_assoc();
   $aau = $result2->fetch_assoc();
 
-  if($_SERVER["REQUEST_METHOD"] == "GET") {
-
-    echo '<script>myfunction()</script>';
-    $fname = mysqli_real_escape_string($db, $_GET['fname']);
-    $lname = mysqli_real_escape_string($db, $_POST['lname']);
-    $year = mysqli_real_escape_string($db, $_POST['year']);
-    $hs = mysqli_real_escape_string($db, $_POST['hs']);
-    $aau = mysqli_real_escape_string($db, $_POST['aau']);
-    
-    $sql = "UPDATE player SET fname = '$fname', lname = '$lname', year = '$year' WHERE p_id = '$_POST[p_id]'";
-    $db->query($sql);
-    
-    $sql1 = "UPDATE hs SET name = '$hs' WHERE hs_id = '$_POST[hs_id]'";
-    $db->query($sql1);
-
-    $sql2 = "UPDATE player SET aau = '$aau'WHERE aau_id = '$_POST[aau_id]'";
-    $db->query($sql2);
-
-    //header("location: recruitHome.php");
-  }
 ?>
 
 <!DOCTYPE html>
