@@ -1,14 +1,19 @@
 <?php
   /*-- we included connection files--*/
   include "../config.php";
+    $sql = "SELECT * FROM player WHERE p_id = '$_POST[p_id]'";
+    $result = $db->query($sql);
+    $player = $result->fetch_assoc();
 
 
   if($_SERVER["REQUEST_METHOD"] == "GET") {
 
-    $p_id = $_POST["p_id"];
+    
+
+    //$p_id = $_POST["p_id"];
     $comment = mysqli_real_escape_string($db, $_GET['evaluation']);
 
-    $sql = "INSERT INTO evaluation (p_id, comment) VALUES ($p_id, '$comment')";
+    $sql = "INSERT INTO evaluation (p_id, comment) VALUES (".$player['p_id'].", '$comment')";
 	 $db->query($sql);
 
     //header('location: recruitHome.php');
