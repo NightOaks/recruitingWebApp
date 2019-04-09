@@ -1,7 +1,7 @@
 <?php
   /*-- we included connection files--*/
   include "../config.php";
-
+  $p_id = $_POST['p_id'];
   $sql = "SELECT * FROM player WHERE p_id ='$_POST[p_id]'";
   $sql1 = "SELECT high_school.name FROM player INNER JOIN high_school ON player.hs_id=high_school.hs_id WHERE p_id = '$_POST[p_id]'";
   $sql2 = "SELECT aau.name FROM player INNER JOIN aau ON player.aau_id=aau.aau_id WHERE p_id = '$_POST[p_id]'";
@@ -15,7 +15,7 @@
   if($_SERVER["REQUEST_METHOD"] == "GET") {
 
     echo '<script>myfunction()</script>';
-    $fname = mysqli_real_escape_string($db, $_POST['fname']);
+    $fname = mysqli_real_escape_string($db, $_GET['fname']);
     $lname = mysqli_real_escape_string($db, $_POST['lname']);
     $year = mysqli_real_escape_string($db, $_POST['year']);
     $hs = mysqli_real_escape_string($db, $_POST['hs']);
@@ -47,26 +47,30 @@
   </head>
 
   <body>
-    <p class="center">Edit Recruit</p>
+  <?php 
+    echo "
+    <p class='center'>Edit Recruit</p>
     
 
-    <p><a class="float-right" href="recruitHome.php">Cancel</a></p>
+    <p><a class='float-right' href='recruitHome.php'>Cancel</a></p>
 
-    <form method="GET" name="upfrm" action="" enctype="multipart/form-data">
-      <input type="submit" value="Update" name="btn_edit" id="btn_edit" class="btn" />
+    <form method='post' name='upfrm' action='editDB.php' enctype='multipart/form-data'>
+      <input type='submit' value='Update' name='btn_edit' id='btn_edit' class='btn' />
+      <input type='hidden' name='p_id' value=".$p_id."/>
         <div>
           First name:<br>
-          <input type="text" name="fname" value="<?php echo $player['fname']?>"><br>
+          <input type='text' name='fname' value=".$player['fname']."><br>
           Last name:<br>
-          <input type="text" name="lname" value="<?php echo $player['lname']?>"><br>
+          <input type='text' name='lname' value=".$player['lname']."><br>
           Year:<br>
-          <input type="text" name="year" value="<?php echo $player['year']?>"><br>
+          <input type='text' name='year' value=".$player['year']."><br>
           High School:<br>
-          <input type="text" name="hs" value="<?php echo $hs['name']?>"><br>
+          <input type='text' name='hs' value=".$hs['name']."><br>
           AAU:<br>
-          <input type="text" name="aau" value="<?php echo $aau['name']?>"><br>
+          <input type='text' name='aau' value=".$aau['name']."><br>
           
         </div>
-      </form>
+      </form>";
+    ?>
   </body>
 </html>

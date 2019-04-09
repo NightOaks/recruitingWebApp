@@ -8,9 +8,11 @@
     $finalhsid = NULL;
     $finalaauid = NULL; 
 
-    if (!$imageName) {
-      $imageTmp=addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
-    }
+    #if (!$imageName) {
+    #  $imageTmp=addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
+    #}
+    
+    $imageTmp = addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
 
     $fname = mysqli_real_escape_string($db, $_POST['fname']);
     $lname = mysqli_real_escape_string($db, $_POST['lname']);

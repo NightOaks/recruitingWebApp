@@ -116,9 +116,15 @@
 
 
       echo "<div class='black-border'>
+
       <button onclick='DisplayStats()'>Stats</button>
       <button onclick='DisplayJuice()'>Juice</button>
       <button onclick='DisplayEvals()'>Evaluations</button>
+
+      <form action='addEval.php' method='get'>
+        <input type='hidden' name='p_id' value=".$player['p_id'].">
+        <input class = 'btn text-color' type='submit' value='Evaluations'>
+      </form>
       <hr>
 
       <div class='hidden' id='displayStat'>
@@ -155,5 +161,25 @@
       //</form>
 
     ?>
+
+    <div class="padding">
+      <p class="center">JUICE Statistics</p>
+    
+    <form method="POST" name="upfrm" action="" enctype="multipart/form-data">
+        
+          <div class="center"> 
+          <input class="margin" type="text" placeholder="Grit" name="grit"><br>
+          
+          <input class="margin" type="text" placeholder="Talk" name="talk"><br>
+          
+          <input class="margin" type="text" placeholder="Motor" name="motor"><br>
+          
+          <input class="margin" type="text" placeholder="Stamina" name="stamina"><br>
+          
+          <input class="margin" type="text" placeholder="Feel" name="feel"><br>
+          
+          <input type="submit" value="Done" name="btn_upload" id="btn_upload" class="btn text-color" />
+        </div>
+
   </body>
 </html>
