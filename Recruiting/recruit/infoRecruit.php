@@ -141,17 +141,18 @@
         This is my eval element.
       </div>";
 
-	  	$sql3 = "SELECT * FROM evaluation WHERE p_id = '$_GET[p_id]'";
-	    $evalList = $db->query($sql3);
-	  	$evalForm = '';
+      $sql3 = "SELECT * FROM evaluation WHERE p_id = '$_GET[p_id]'";
+      $evalList = $db->query($sql3);
+      $evalForm = '';
 
       while ($evaluation = $evalList->fetch_assoc()){
           $evalForm .= 
             "<div class='padding'>
-                <input class='btn-recruit' type='submit' value='"$evaluation['comment']"'>
+                <input class='btn-recruit' value=".$evaluation['comment'].">
             </div>";
         }
-      
+
+      echo $evalForm;
 
       echo"</div>";
 
