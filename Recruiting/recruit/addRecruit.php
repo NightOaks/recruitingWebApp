@@ -1,18 +1,12 @@
 <?php
   /*-- we included connection files--*/
   include "../config.php";
-  if($_SERVER["REQUEST_METHOD"] == "POST") {
+  if(isset($_POST['btn_upload'])) {
+
     $imageName="";
     $imageTmp="";
-    $imageName=$_FILES["myimage"]["name"];
     $finalhsid = NULL;
     $finalaauid = NULL; 
-
-    #if (!$imageName) {
-    #  $imageTmp=addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
-    #}
-    
-    $imageTmp = addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
 
     $fname = mysqli_real_escape_string($db, $_POST['fname']);
     $lname = mysqli_real_escape_string($db, $_POST['lname']);
@@ -35,6 +29,9 @@
     $aauid = $db->query($sql4);
     $resultaauid = $aauid->fetch_array(MYSQLI_NUM);
     $finalaauid = $resultaauid[0];
+    
+    $imageName = $_FILES['myimage']['name'];
+    $imageTmp = addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
 
     $sql = "INSERT INTO player(fname, lname, year, profileImage, profileName, hs_id, aau_id) VALUES ('$fname', '$lname', '$year', '$imageTmp', '$imageName', '$finalhsid', '$finalaauid')";
     $db->query($sql);
@@ -62,7 +59,7 @@
 
       <p><a class="float-right" href="recruitHome.php">Cancel</a></p>
       
-      <form method="POST" name="upfrm" action="" enctype="multipart/form-data">
+      <form method="post" name="upfrm" enctype="multipart/form-data">
       
         <input type="submit" value="Done" name="btn_upload" id="btn_upload" class="btn text-color" />
         <div> 
@@ -77,7 +74,7 @@
           <input class="margin" type="text" placeholder="AAU team" name="aau"><br>
           
           <p>Choose profile image:</p>
-          <input type="file" name="myimage" id="myimage" class="file_input text-color" />
+          <input type="file" name="myimage" class="file_input text-color" />
           
         </div>
       </form>
