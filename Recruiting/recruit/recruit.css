@@ -37,6 +37,10 @@ div.hidden {
 	font-size: 140%;
 }
 
+.text-color-eval {
+	color: #000000;
+}
+
 .text-color {
 	color: #808080;
 }
