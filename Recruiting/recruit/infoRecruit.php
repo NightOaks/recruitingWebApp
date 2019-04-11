@@ -139,22 +139,46 @@
     
     <div class="padding">
       <p class="center">JUICE Statistics</p>
-    
-    <form method="POST" name="upfrm" action="" enctype="multipart/form-data">
-        
-          <div class="center"> 
-          <input class="margin" type="text" placeholder="Grit" name="grit"><br>
-          
-          <input class="margin" type="text" placeholder="Talk" name="talk"><br>
-          
-          <input class="margin" type="text" placeholder="Motor" name="motor"><br>
-          
-          <input class="margin" type="text" placeholder="Stamina" name="stamina"><br>
-          
-          <input class="margin" type="text" placeholder="Feel" name="feel"><br>
-          
-          <input type="submit" value="Done" name="btn_upload" id="btn_upload" class="btn text-color" />
-        </div>
+      <?php 
+      echo "
+      <div class='center'>
+      <form action='addJuice.php' method='get'>
+        <input type='hidden' name='p_id' value=".$player['p_id'].">
+        <input class = 'btn text-color' type='submit' value='Add JUICE Stats'>
+      </form>
+      </div>";
+      
+      echo "
+      <br>
+      <br>
+      ";
+      
+      $sql4 = "SELECT * FROM juice_stats WHERE p_id = '$_GET[p_id]'";
+      $juiceList = $db->query($sql4);
+      $juiceForm = '';
+      
+      echo "<div class='center'>";
+      echo "<table align='center' border='1' cellpadding='2' cellspacing='2'>";
+      echo '<tr>';
+      echo '<th>Motor</th>';
+      echo '<th>Grit</th>';
+      echo '<th>Feel</th>';
+      echo '<th>Talk</th>';
+      echo '<th>Stamina</th>';
+
+      while ($juice = $juiceList->fetch_assoc()){
+          echo '<tr>';
+          echo '<td>'.$juice['motor'].'</td>';
+          echo '<td>'.$juice['grit'].'</td>';
+          echo '<td>'.$juice['feel'].'</td>';
+          echo '<td>'.$juice['talk'].'</td>';
+          echo '<td>'.$juice['stamina'].'</td>';
+          echo '</tr>';
+        }
+      
+      echo '</table>';
+      echo '</div>';  
+    ?>
 
   </body>
 </html>
